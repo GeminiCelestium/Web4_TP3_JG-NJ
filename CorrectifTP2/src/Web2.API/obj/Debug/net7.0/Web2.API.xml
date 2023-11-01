@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Web2.API</name>
+    </assembly>
+    <members>
+        <member name="M:Web2.API.Controllers.EvenementsController.Get(System.Int32,System.Int32,System.String)">
+            <summary>
+            Lister tous les evenements de la plateforme
+            </summary>
+            <returns></returns>
+            <response code="200">Retourne un evenement</response>
+        </member>
+        <member name="M:Web2.API.Controllers.EvenementsController.Get(System.Int32)">
+            <summary>
+            Obtenir un evenement par son ID
+            </summary>
+            <remarks> Sample of request:
+            
+               GET api/evenements/5
+                
+            </remarks>
+            <param name="id"> ID de l'evenement</param>
+            <returns></returns>
+            <response code="200">Retourne un evenement</response>
+            <response code="404">Retourne une erreur si l'evenement est introuvable</response>
+        </member>
+        <member name="M:Web2.API.Controllers.EvenementsController.Post(Web2.API.DTO.EvenementDTO)">
+            <summary>
+            Creer un evenement
+            </summary>
+            <param name="value">Événement a créer</param>
+            <returns></returns>
+            <response code="201">Retourne une reponse avec un header Loaction contenant l'url vers le GET de l'evenement créé</response>
+            <response code="400">Retourne une erreur de validation de l'evenement</response>
+        </member>
+        <member name="M:Web2.API.Controllers.EvenementsController.Put(System.Int32,Web2.API.DTO.EvenementDTO)">
+            <summary>
+            Modification d'un événement
+            </summary>
+            <param name="id">Identifiant de l'événement a modifier</param>
+            <param name="value">Les nouvelles valeurs de l'événement</param>
+            <returns></returns>
+            <response code="204">Operation reussi. Reponse vide</response>
+            <response code="400">Retourne une erreur de validation de l'evenement</response>
+            <response code="404">Retourne une erreur si l'evenement est introuvable</response>
+        </member>
+        <member name="M:Web2.API.Controllers.EvenementsController.Delete(System.Int32)">
+            <summary>
+            Supprimer un événement
+            </summary>
+            <param name="id">Identifiant de l'événement a supprimer</param>
+            <returns></returns>
+            <response code="204">Operation reussi. Reponse vide</response>
+        </member>
+        <member name="M:Web2.API.Controllers.EvenementsController.GetListByVille(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Liste des événements d'une ville donnée
+            </summary>
+            <param name="villeId">Identifiant de la ville</param>
+            <returns>Liste de participation <see cref="T:Web2.API.DTO.ParticipationDTO"/></returns>
+            <response code="200">Lister des evenements de la ville</response>
+        </member>
+        <member name="M:Web2.API.Controllers.ParticipationsController.Get">
+            <summary>
+            Lister toutes les participations
+            </summary>
+            <returns></returns>
+            <response code="200">Retourne une liste de participation</response>
+        </member>
+        <member name="M:Web2.API.Controllers.ParticipationsController.Get(System.Int32)">
+            <summary>
+            Obtenir les détails d'une participation a partir de son id
+            </summary>
+            <param name="id">Identifiant de la participation</param>
+            <returns><see cref="!:Participation"/></returns>
+            <response code="200">Retourne une participation</response>
+            <response code="404">Retourne une erreure si la participation est introuvable</response>
+        </member>
+        <member name="M:Web2.API.Controllers.ParticipationsController.Post(Web2.API.DTO.ParticipationDTO)">
+            <summary>
+            Permet d'ajouter un participation
+            </summary>
+            <param name="value"><see cref="!:Participation"/> Nouvelle participation</param>
+            <returns></returns>
+            <response code="202">Retourne une reponse avec une entete Location contenant l'uri de verification du status de la resource</response>
+            <response code="400">Retourne une erreure de validation</response>
+        </member>
+        <member name="M:Web2.API.Controllers.ParticipationsController.Status(System.Int32)">
+            <summary>
+            Verifier le status de traitement de la creation/ajout d'une participation
+            </summary>
+            <param name="id">Identifiant de la participation</param>
+            <returns>retourne le status en tant que string</returns>
+            <response code="200">Retourne le status d'une participation qui est en attente de validation</response>
+            <response code="303">Redirige vers GET d'une participation deja validé</response>
+        </member>
+        <member name="M:Web2.API.Controllers.ParticipationsController.Delete(System.Int32)">
+            <summary>
+            Supprimer une participation
+            </summary>
+            <param name="id">Identifiant de la participation</param>
+            <returns></returns>
+        </member>
+        <member name="M:Web2.API.Controllers.ParticipationsController.GetByEvent(System.Int32)">
+            <summary>
+            Liste des Participations d'un événement
+            </summary>
+            <param name="eventId">Identifiant de l'evenement</param>
+            <returns></returns>
+            <response code="200">Retourne la liste des partcipations</response>
+        </member>
+        <member name="T:Web2.API.Migrations.initialSchemas">
+            <inheritdoc />
+        </member>
+        <member name="M:Web2.API.Migrations.initialSchemas.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Web2.API.Migrations.initialSchemas.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Web2.API.Migrations.initialSchemas.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Web2.API.Migrations.cascadeDeleteParticipations">
+            <inheritdoc />
+        </member>
+        <member name="M:Web2.API.Migrations.cascadeDeleteParticipations.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Web2.API.Migrations.cascadeDeleteParticipations.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Web2.API.Migrations.cascadeDeleteParticipations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

@@ -67,7 +67,40 @@ namespace IdentityServerAspNetIdentity
                     // set the redirect URI to https://localhost:5001/signin-google
                     options.ClientId = "copy client ID from Google here";
                     options.ClientSecret = "copy client secret from Google here";
-                });
+                }
+            );
+
+            services.AddIdentityServer()
+                .AddInMemoryClients(new List<Client>
+                {
+                    new Client
+                    {
+                        ClientId = "web2_ui",
+                        ClientName = "Web2.UI Vuejs oidc client",
+                        ClientSecrets = { new Secret("secretTP3jdnj".Sha256()) },
+                        AllowedGrantTypes = GrantTypes.Code,
+                        RequireClientSecret = false,
+                        RedirectUris = new List<string>
+                        {
+                            "http://localhost:8080/auth/signinsilent/vuejs",
+                            "http://localhost:8080/auth/signinwin/vuejs",
+                            "http://localhost:8080/auth/signinpop/vuejs"
+                        },
+                        PostLogoutRedirectUris = new List<string> { "http://localhost:8080/" },
+                        AllowedCorsOrigins = new List<string> { "http://localhost:8080" },
+                        AllowedScopes = new List<string>
+                        {
+                            "web2ApiScope",
+                            IdentityServerConstants.StandardScopes.OpenId,
+                            IdentityServerConstants.StandardScopes.Profile
+                        }
+                    }
+                })
+                .AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
+                .AddInMemoryApiResources(IdentityConfig.GetApiResources())
+                .AddInMemoryApiScopes(IdentityConfig.GetApiScopes())
+                .AddInMemoryClients(IdentityConfig.GetClients())
+                .AddDeveloperSigningCredential(); // You should replace this with a production-ready certificate in a real environment
         }
 
         public void Configure(IApplicationBuilder app)
