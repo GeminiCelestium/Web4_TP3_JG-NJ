@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        name: 'Accueil',
+        name: 'VueAccueil',
         // ...
     }
 </script>

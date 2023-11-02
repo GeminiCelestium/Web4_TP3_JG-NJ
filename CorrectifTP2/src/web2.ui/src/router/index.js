@@ -5,24 +5,24 @@ const routes = [
   {
     path: '/',
     name: 'Accueil',
-    component: () => import('../views/Accueil.vue'),
+    component: () => import('../views/VueAccueil.vue'),
   },
   {
     path: '/evenements',
     name: 'Évènements',
-    component: () => import('../views/Evenements.vue'),
+    component: () => import('../views/VueEvenements.vue'),
     meta: { authName: mainOidc.authName }, // Cette route est protégée
   },
   {
     path: '/statistique',
     name: 'Statistique',
-    component: () => import('../views/Statistique.vue'),
+    component: () => import('../views/VueStatistique.vue'),
     meta: { authName: mainOidc.authName }, // Cette route est protégée
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import('../views/Login.vue'),
+    component: () => import('../views/VueLogin.vue'),
   },
 ];
 

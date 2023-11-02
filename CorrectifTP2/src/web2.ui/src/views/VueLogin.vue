@@ -7,6 +7,7 @@
   
   <script>
   export default {
+    name: 'VueLogin',
     methods: {
       login() {
         // Utilisez la méthode de connexion OIDC appropriée, par exemple :

@@ -7,7 +7,7 @@
   
   <script>
   export default {
-    name: 'Statistique',
+    name: 'VueStatistique',
     mounted() {
       // Vérifiez si l'utilisateur est authentifié avant d'accéder à la page
       if (!this.$oidc.isAuthenticated) {

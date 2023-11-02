@@ -11,6 +11,7 @@
   
   <script>
   export default {
+    name: 'VueEvenements',
     data() {
       return {
         events: [], // Remplissez cette liste avec les données des événements depuis votre API
