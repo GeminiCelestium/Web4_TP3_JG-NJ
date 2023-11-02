@@ -1,27 +1,48 @@
 <template>
-    <div class="container">        
+  <div class="container">        
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-      <header>
-        <slot name="header">
-          <nav>
-            <div>
-              <router-link to="/"><i class="fas fa-home"></i> Accueil</router-link>
-              <router-link to="/evenements">Evènements</router-link>
-              <router-link to="/statistiques">Statistiques</router-link>
-            </div>
-            <div>
-              <router-link to="/login"><i class="fas fa-key"></i> Login</router-link>
-            </div>
-          </nav>
-        </slot>
-      </header>
-      <main>
-        <slot></slot>
-      </main>
-    </div>
-  </template>
+    <header>
+      <slot name="header">
+        <nav>
+          <div>
+            <router-link to="/"><i class="fas fa-home"></i> Accueil</router-link>
+            <router-link to="/evenements">Evènements</router-link>
+            <router-link v-if="isAdmin" to="/statistiques">Statistiques</router-link>
+          </div>
+          <div>
+            <router-link to="/login"><i class="fas fa-key"></i> Login</router-link>
+          </div>
+        </nav>
+      </slot>
+    </header>
+    <main>
+      <slot></slot>
+    </main>
+  </div>
+</template>
+
+<script>
+import mainOidc from '@/api/authClient'
+
+export default {
+  data() {
+    return {
+      
+    };
+  },
+  computed: {
+    
+  },
+  methods: {
+    isAdmin() {
+      mainOidc.userprofile.role === 'admin'
+    }
+  },
+}
+
+</script>
   
-  <style>
+<style>
   nav {
     padding: 15px;
     display: flex;
@@ -46,4 +67,4 @@
   footer {
     background: #d2e7e7;
   }
-  </style>
+</style>

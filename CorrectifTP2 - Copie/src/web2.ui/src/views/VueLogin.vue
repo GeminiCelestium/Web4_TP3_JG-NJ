@@ -6,12 +6,14 @@
   </template>
   
   <script>
+import mainOidc from '@/api/authClient';
+
   export default {
     name: 'VueLogin',
     methods: {
       login() {
         // Utilisez la méthode de connexion OIDC appropriée, par exemple :
-        this.$oidc.signIn();
+        mainOidc.signIn();
       },
     },
   };
