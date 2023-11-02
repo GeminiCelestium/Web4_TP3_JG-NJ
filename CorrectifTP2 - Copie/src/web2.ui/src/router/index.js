@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/VueAccueil.vue'
+import mainOidc from '../api/authClient.js'
 
 const routes = [
   {
@@ -13,7 +14,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/VueEvenements.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/VueEvenements.vue'),
   },
   {
     path: '/statistiques',
@@ -21,7 +22,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/VueStatistiques.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/VueStatistiques.vue'),
   },
   {
     path: '/login',
@@ -37,5 +38,7 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+mainOidc.useRouter(router);
 
 export default router
