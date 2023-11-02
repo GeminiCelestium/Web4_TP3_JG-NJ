@@ -6,10 +6,11 @@
           <nav>
             <div>
               <router-link to="/"><i class="fas fa-home"></i> Accueil</router-link>
-              <router-link to="/todos">Evènements</router-link>
+              <router-link to="/evenements">Evènements</router-link>
+              <router-link to="/statistiques">Statistiques</router-link>
             </div>
             <div>
-              <router-link to="/login/coubalde@email.com"><i class="fas fa-key"></i> Login</router-link>
+              <router-link to="/login"><i class="fas fa-key"></i> Login</router-link>
             </div>
           </nav>
         </slot>
