@@ -16,7 +16,7 @@ const routes = [
   {
     path: '/statistique',
     name: 'Statistique',
-    component: () => import('../views/VueStatistique.vue'),
+    component: () => import('../views/VueStatistiques.vue'),
     meta: { authName: mainOidc.authName }, // Cette route est protégée
   },
   {
