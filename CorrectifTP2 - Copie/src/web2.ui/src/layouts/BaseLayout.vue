@@ -24,20 +24,20 @@
   nav {
     padding: 15px;
     display: flex;
-    background: #bbc5c9;
+    background: #1C2933;
     font-size: x-large;
     justify-content: space-between;
   }
   
   nav a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #75C5FF;
     margin: 10px;
     text-decoration: none;
   }
   
   nav a.router-link-exact-active {
-    color: #099455;
+    color: #EFA925;
   }
   main {
     min-height: 300px;
