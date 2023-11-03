@@ -10,12 +10,12 @@
 </template>
   
 <script>
-import EventList from '@/components/CompEvenements.vue'
+//import EventList from '@/components/CompEvenements.vue'
 
   export default {
     name: 'VueEvenements',
     components:{
-      EventList
+     // EventList
     },
     data() {
       return {
