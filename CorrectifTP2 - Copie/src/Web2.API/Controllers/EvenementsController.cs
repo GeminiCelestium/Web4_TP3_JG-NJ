@@ -19,11 +19,18 @@ namespace Web2.API.Controllers
     public class EvenementsController : ControllerBase
     {
         private readonly IEvenementBL _evenementBL;
-
+        private static int idSequence = 1;
         public EvenementsController(IEvenementBL evenementBL)
         {
             _evenementBL = evenementBL;
         }
+
+        private static readonly List<Event> Events  = new List<Event>()
+        {
+            new Event {Id = idSequence++, Titre = "Jazz Fest", VilleID = 1, Organisateur = "Def Jam",DateDebut = "2022-07-08T10:00:00", DateFin = "2022-07-10T10:00:00", Prix = 100,00, CategoryIDs = [1,2] , Description = "Festival de Jazz"}
+            new Event {Id = idSequence++, Titre = "Grand Prix" ,VilleID = 2, Organisateur = "7 ieme Ciel",DateDebut = "2022-08-08T10:00:00", DateFin = "2022-08-10T10:00:00", Prix = 70,00, CategoryIDs = [1,2] , Description = "Festival de Rap"}
+
+        };
 
 
         // GET: api/<EvenementsController>
@@ -34,9 +41,17 @@ namespace Web2.API.Controllers
         /// <response code="200">Retourne un evenement</response>
         [HttpGet()]
         [ProducesResponseType(typeof(List<EvenementDTO>),(int)HttpStatusCode.OK)]
-        public ActionResult<IEnumerable<EvenementDTO>> Get(int pageIndex = 1, int pageCount = 5, string searchQuery = null)
+        public ActionResult<IEnumerable<EvenementDTO>> GetAll(int pageIndex = 1, int pageCount = 5, string searchQuery = null)
         {
-            return Ok(_evenementBL.GetList(pageIndex, pageCount, searchQuery));
+            var query = Events
+                .FindAll(event => string.IsNullOrEmpty(filterString) || event.Text.Contains(filterString, StringComparison.CurrentCultureIgnoreCase))
+                .Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+
+            var events = query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+
+            var pageCount = (double)query.Count() / pageSize;
+
+            return new Pageable<Event>() { data = events, PageSize = pageSize, PageIndex = pageIndex, PageCount = (int) Math.Ceiling(pageCount)};
         }
 
         // GET api/evenements/5

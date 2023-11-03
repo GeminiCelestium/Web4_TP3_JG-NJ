@@ -17,8 +17,8 @@
             <td><input type="checkbox" :checked="item.done" @click="updateEventstatusApi({event: item, 'index': index})"></td>
             <td>{{ item.text }}</td>
             <td><button @click="deleteEventApi({id: item.id, 'index': index})"><i class="fa fa-trash"></i></button>
-              <button @click="$router.push(`/Events/${item.id}/edit`)"><i class="fa">Edit</i></button>
-              <button @click="$router.push(`/Events/${item.id}/view`)"><i class="fa">View</i></button>
+              <button @click="$router.push(`/events/${item.id}/edit`)"><i class="fa">Edit</i></button>
+              <button @click="$router.push(`/events/${item.id}/view`)"><i class="fa">View</i></button>
             </td>
           </tr>
         </tbody>
