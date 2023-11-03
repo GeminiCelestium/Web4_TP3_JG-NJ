@@ -1,11 +1,11 @@
 <template>
-    <div>
-      <h1>Statistique de la plateforme</h1>
-      <p>Contenu de la page de statistiques</p>
-    </div>
-  </template>
+  <div>
+    <h1>Statistique de la plateforme</h1>
+    <p>Contenu de la page de statistiques</p>
+  </div>
+</template>
   
-  <script>
+<script>
   export default {
     name: 'VueStatistiques',
     /*mounted() {
@@ -15,5 +15,5 @@
       }
     },*/
   };
-  </script>
+</script>
   

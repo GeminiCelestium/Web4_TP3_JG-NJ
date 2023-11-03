@@ -1,15 +1,15 @@
 <template>
-    <div>
-      <h1>Évènements</h1>
-      <ul>
-        <li v-for="event in events" :key="event.id">
-          {{ event.title }}
-        </li>
-      </ul>
-    </div>
-  </template>
+  <div>
+    <h1>Évènements</h1>
+    <ul>
+      <li v-for="event in events" :key="event.id">
+        {{ event.title }}
+      </li>
+    </ul>
+  </div>
+</template>
   
-  <script>
+<script>
   export default {
     name: 'VueEvenements',
     data() {
@@ -22,5 +22,5 @@
       // Vous devrez peut-être effectuer une requête HTTP à votre API avec Axios.
     },
   };
-  </script>
+</script>
   
