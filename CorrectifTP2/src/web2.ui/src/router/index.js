@@ -1,34 +1,47 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import mainOidc from '../api/authClient.js';
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/VueAccueil.vue'
+import mainOidc from '../api/authClient.js'
 
 const routes = [
   {
     path: '/',
-    name: 'Accueil',
-    component: () => import('../views/VueAccueil.vue'),
+    name: 'accueil',
+    component: HomeView
   },
   {
-    path: '/evenements',
-    name: 'Évènements',
-    component: () => import('../views/VueEvenements.vue'),
-    meta: { authName: mainOidc.authName }, // Cette route est protégée
+    path: '/evenements/:id/:action',
+    name: 'evenement',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '@/components/CompEvenements.vue'),    
   },
   {
-    path: '/statistique',
-    name: 'Statistique',
-    component: () => import('../views/VueStatistiques.vue'),
-    meta: { authName: mainOidc.authName }, // Cette route est protégée
+    path: '/statistiques',
+    name: 'statistiques',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '@/components/CompStatistiques.vue'),
   },
   {
     path: '/login',
-    name: 'Login',
-    component: () => import('../views/VueLogin.vue'),
-  },
-];
+    name: 'login',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '@/components/CompLogin'),
+    /*meta: {
+      authName: mainOidc.authName
+    }*/
+  }
+]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
-});
+  routes
+})
 
-export default router;
+mainOidc.useRouter(router);
+
+export default router

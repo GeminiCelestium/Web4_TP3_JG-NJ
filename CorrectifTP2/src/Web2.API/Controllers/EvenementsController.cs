@@ -1,13 +1,17 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using NUnit.Framework.Internal.Execution;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using Todolist.API;
 using Web2.API.BusinessLogic;
+using Web2.API.Data.Models;
 using Web2.API.DTO;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,25 +23,32 @@ namespace Web2.API.Controllers
     public class EvenementsController : ControllerBase
     {
         private readonly IEvenementBL _evenementBL;
-
+        private static int idSequence = 1;
         public EvenementsController(IEvenementBL evenementBL)
         {
             _evenementBL = evenementBL;
         }
 
-
-        // GET: api/<EvenementsController>
-        /// <summary>
-        /// Lister tous les evenements de la plateforme
-        /// </summary>
-        /// <returns></returns>
-        /// <response code="200">Retourne un evenement</response>
-        [HttpGet()]
-        [ProducesResponseType(typeof(List<EvenementDTO>),(int)HttpStatusCode.OK)]
-        public ActionResult<IEnumerable<EvenementDTO>> Get(int pageIndex = 1, int pageCount = 5, string searchQuery = null)
+        private static readonly List<EvenementDTO> Events = new List<EvenementDTO>()
         {
-            return Ok(_evenementBL.GetList(pageIndex, pageCount, searchQuery));
+            new EvenementDTO {ID = idSequence++, Titre = "Jazz Fest", VilleID = 1, Organisateur = "Def Jam",DateDebut = DateTime.Parse("2022-08-08T10:00:00"), DateFin = DateTime.Parse("2022-08-10T10:00:00"), Prix = 100.00, CategoryIDs = {1,2 } , Description = "Festival de Jazz"},
+            new EvenementDTO {ID = idSequence++, Titre = "Grand Prix" ,VilleID = 2, Organisateur = "7 ieme Ciel",DateDebut = DateTime.Parse("2022-08-08T10:00:00"), DateFin = DateTime.Parse("2022-08-10T10:00:00"), Prix = 70.00, CategoryIDs = {1,2 } , Description = "Festival de Rap"}
+        };
+
+        [HttpGet]
+        public Pageable<EvenementDTO> GetAll(string filterString, int pageIndex = 1, int pageSize = 5)
+        {
+            var query = Events
+                .FindAll(evenement => string.IsNullOrEmpty(filterString) || evenement.Titre.Contains(filterString, StringComparison.CurrentCultureIgnoreCase) || evenement.Description.Contains(filterString, StringComparison.CurrentCultureIgnoreCase))
+                 .Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+
+            var todos = query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+
+            var pageCount = (double)query.Count() / pageSize;
+
+            return new Pageable<EvenementDTO>() { data = todos, PageSize = pageSize, PageIndex = pageIndex, PageCount = (int)Math.Ceiling(pageCount) };
         }
+
 
         // GET api/evenements/5
         /// <summary>
@@ -101,7 +112,7 @@ namespace Web2.API.Controllers
         public ActionResult Put(int id, [FromBody] EvenementDTO value)
         {
             _evenementBL.Updade(id, value);
-            
+
             return NoContent();
         }
 
@@ -143,3 +154,4 @@ namespace Web2.API.Controllers
         }
     }
 }
+

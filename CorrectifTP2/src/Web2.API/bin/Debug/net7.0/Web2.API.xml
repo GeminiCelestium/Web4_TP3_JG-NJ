@@ -4,13 +4,6 @@
         <name>Web2.API</name>
     </assembly>
     <members>
-        <member name="M:Web2.API.Controllers.EvenementsController.Get(System.Int32,System.Int32,System.String)">
-            <summary>
-            Lister tous les evenements de la plateforme
-            </summary>
-            <returns></returns>
-            <response code="200">Retourne un evenement</response>
-        </member>
         <member name="M:Web2.API.Controllers.EvenementsController.Get(System.Int32)">
             <summary>
             Obtenir un evenement par son ID

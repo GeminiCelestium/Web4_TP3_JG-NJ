@@ -17,17 +17,23 @@ namespace Web2.API.Controllers
     public class VillesController : ControllerBase
     {
         private readonly IVilleBL _villeBL;
-
+        private static int idSequence = 1;
         public VillesController(IVilleBL villeBL)
         {
             _villeBL = villeBL;
         }
 
-
+        private static readonly List<VilleDTO> Villes  = new List<VilleDTO>()
+        {
+            new VilleDTO {ID = idSequence++, Name = "Sherbrook"},
+            new VilleDTO {ID = idSequence++, Name = "Trois-Rivieres" },
+            new VilleDTO {ID = idSequence++, Name = "Québec" },
+            new VilleDTO {ID = idSequence++, Name = "Montreal" }
+        };
 
         // GET: api/<VillesController>
         [HttpGet]
-        public IEnumerable<VilleDTO> Get(bool orderByPopularity = false)
+        public IEnumerable<VilleDTO> GetAll(bool orderByPopularity = false)
         {
             return _villeBL.GetList(orderByPopularity);
         }

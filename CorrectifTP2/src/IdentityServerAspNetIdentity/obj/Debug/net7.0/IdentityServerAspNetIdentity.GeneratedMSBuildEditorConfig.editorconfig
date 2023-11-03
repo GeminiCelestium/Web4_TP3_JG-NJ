@@ -9,85 +9,85 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = IdentityServerAspNetIdentity
 build_property.RootNamespace = IdentityServerAspNetIdentity
-build_property.ProjectDir = E:\Cours en Ligne\Sessions\3 - Eté 2023\Web 4\TxPs\TP 3\Web4_TP3_JG-NJ\CorrectifTP2\src\IdentityServerAspNetIdentity\
+build_property.ProjectDir = F:\session 4\Session 4B\WEB\TP3\Web4_TP3_JG-NJ\CorrectifTP2 - Copie\src\IdentityServerAspNetIdentity\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = E:\Cours en Ligne\Sessions\3 - Eté 2023\Web 4\TxPs\TP 3\Web4_TP3_JG-NJ\CorrectifTP2\src\IdentityServerAspNetIdentity
+build_property.MSBuildProjectDirectory = F:\session 4\Session 4B\WEB\TP3\Web4_TP3_JG-NJ\CorrectifTP2 - Copie\src\IdentityServerAspNetIdentity
 build_property._RazorSourceGeneratorDebug = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Account/AccessDenied.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Account/LoggedOut.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Account/LoggedOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dnZWRPdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Account/Login.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Account/Logout.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Consent/Index.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Consent/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29uc2VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Device/Success.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Device/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlXFN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Device/UserCodeCapture.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Device/UserCodeCapture.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlXFVzZXJDb2RlQ2FwdHVyZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Device/UserCodeConfirmation.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Device/UserCodeConfirmation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGV2aWNlXFVzZXJDb2RlQ29uZmlybWF0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Diagnostics/Index.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Diagnostics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlhZ25vc3RpY3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Grants/Index.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Grants/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Home/Index.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Shared/Error.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Shared/Redirect.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Shared/Redirect.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFJlZGlyZWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Shared/_Layout.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Shared/_Nav.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Shared/_Nav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9OYXYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Shared/_ScopeListItem.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Shared/_ScopeListItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9TY29wZUxpc3RJdGVtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/Shared/_ValidationSummary.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/Shared/_ValidationSummary.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU3VtbWFyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/_ViewImports.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[E:/Cours en Ligne/Sessions/3 - Eté 2023/Web 4/TxPs/TP 3/Web4_TP3_JG-NJ/CorrectifTP2/src/IdentityServerAspNetIdentity/Views/_ViewStart.cshtml]
+[F:/session 4/Session 4B/WEB/TP3/Web4_TP3_JG-NJ/CorrectifTP2 - Copie/src/IdentityServerAspNetIdentity/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

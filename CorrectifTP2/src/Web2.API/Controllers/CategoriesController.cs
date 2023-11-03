@@ -18,11 +18,19 @@ namespace Web2.API.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryBL _categoryBL;
-
+        private static int idSequence = 1;
         public CategoriesController(ICategoryBL categoryBL)
         {
             _categoryBL = categoryBL;
         }
+
+        private static readonly List<CategoryDTO> Categorys  = new List<CategoryDTO>()
+        {
+            new CategoryDTO {ID = idSequence++, Name = "Festival"},
+            new CategoryDTO {ID = idSequence++, Name = "Musique" },
+            new CategoryDTO {ID = idSequence++, Name = "Sport" },
+            new CategoryDTO {ID = idSequence++, Name = "Politique"}
+        };
 
         // GET: api/<CategoriesController>
         [HttpGet]

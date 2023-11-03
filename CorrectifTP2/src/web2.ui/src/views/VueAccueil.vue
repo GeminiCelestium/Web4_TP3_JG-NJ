@@ -1,20 +1,17 @@
 <template>
-  <div>
-    <h1>Accueil</h1>
-    <p>
-      Bienvenue sur notre application. Voici quelques informations sur notre projet.
-    </p>
+  <div class="home">
+    <img alt="Vue logo" src="../assets/logo.png">
+    <Accueil msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-    export default {
-        name: 'VueAccueil',
-        // ...
+  import Accueil from '@/components/CompAccueil.vue'
+
+  export default {
+    name: 'HomeView',
+    components: {
+      Accueil
     }
+  }
 </script>
-
-
-<style scoped>
-/* Ajoutez ici vos styles CSS spécifiques à la page Accueil */
-</style>
