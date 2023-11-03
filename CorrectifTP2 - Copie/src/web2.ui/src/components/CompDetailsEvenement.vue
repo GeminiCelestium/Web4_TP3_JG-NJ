@@ -15,6 +15,6 @@
         if (!this.$oidc.isAuthenticated) {
           this.$oidc.signIn(); 
         }
-      },*/
+      },test*/
     };
   </script>
