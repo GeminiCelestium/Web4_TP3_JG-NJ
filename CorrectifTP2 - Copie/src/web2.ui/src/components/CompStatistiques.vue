@@ -11,9 +11,8 @@
   export default {
     name: 'CompStatistiques',
     /*mounted() {
-      // Vérifiez si l'utilisateur est authentifié avant d'accéder à la page
       if (!this.$oidc.isAuthenticated) {
-        this.$oidc.signIn(); // Redirigez l'utilisateur vers la page de connexion
+        this.$oidc.signIn(); 
       }
     },*/
   };
