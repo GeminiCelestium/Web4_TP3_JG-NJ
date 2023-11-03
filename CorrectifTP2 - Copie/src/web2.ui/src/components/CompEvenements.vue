@@ -1,36 +1,42 @@
 <template>
+  <div>
+    <h3>{{ titre }}</h3>
+    <input type="text" placeholder="Entrer un titre ou une description" v-model="filter.filterString">
+    <table>
+      <thead>
+        <th>Titre</th>
+        <th>Ville</th>
+        <th>Nbr Participation(s)</th>
+        <th>Catégories</th>
+        <th>Prix</th>
+        <th>Date</th>
+        <th>Action</th>
+      </thead>
+      <tbody>
+        <tr :class="{ done: item.done }" v-for="(item, index) in events" :key="index">
+          <td>{{ item.Titre }}</td>
+          <td>{{ villes.Name  }}</td>
+          <td>{{ item.Titre }}</td>
+          <td>{{ item.Titre }}</td>
+          <td>{{ item.Titre }}</td>
+          <td>{{ item.Titre }}</td>
+          <td>{{ item.Titre }}</td>
+          <td>{{ item.text }}</td>
+          <td>            
+            <button @click="$router.push(`/events/${item.id}/details`)"><i class="fas fa-users"></i></button>
+            <button @click="$router.push(`/events/${item.id}/participer`)"><i class="fas fa-eye"></i></button>
+            <button @click="deleteEventApi({id: item.id, 'index': index})"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <div>
-      <h3>{{ titre }}</h3>
-      <input type="text" placeholder="entrer une tache" v-model="event.text" />
-      <select name="" id="category" v-model="event.category">
-        <option v-for="(category, index) in categories" :key="index" :value="category">{{ category }}</option>
-      </select>
-      <button @click="addEvent">Add</button><br />
-      <table>
-        <thead>
-          <th>Done?</th>
-          <th>Name: <input type="text" placeholder="filtre sur le titre" v-model="filter.filterString"></th>
-          <th>Action</th>
-        </thead>
-        <tbody>
-          <tr :class="{ done: item.done }" v-for="(item, index) in Events" :key="index">
-            <td><input type="checkbox" :checked="item.done" @click="updateEventstatusApi({event: item, 'index': index})"></td>
-            <td>{{ item.text }}</td>
-            <td><button @click="deleteEventApi({id: item.id, 'index': index})"><i class="fa fa-trash"></i></button>
-              <button @click="$router.push(`/Events/${item.id}/edit`)"><i class="fa">Edit</i></button>
-              <button @click="$router.push(`/Events/${item.id}/view`)"><i class="fa">View</i></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div v-if="this.Events.length > 0"> % de progression: {{ progress }}</div>
-      <div>
-        <button type="button" @click="filter.pageIndex--" :disabled="filter.pageIndex <= 1">précédent</button>
-        page {{ filter.pageIndex }} / {{ pageCount }}
-        <button type="button" @click="filter.pageIndex++" :disabled="filter.pageIndex === pageCount">suivant</button>
-      </div>
+      <button type="button" @click="filter.pageIndex--" :disabled="filter.pageIndex <= 1">précédent</button>
+      page {{ filter.pageIndex }} / {{ pageCount }}
+      <button type="button" @click="filter.pageIndex++" :disabled="filter.pageIndex === pageCount">suivant</button>
     </div>
-  </template>
+  </div>
+</template>
 
 <script>
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
@@ -39,7 +45,8 @@ export default {
     name: "CompEvenements",
     data() {
         return {
-            event: {},
+            events: {},
+            villes: {},
         }
     },
     methods: {

@@ -3,12 +3,12 @@
 </template>
 
 <script>
-import Login from '@/components/CompLogin.vue'
+  import Login from '@/components/CompLogin.vue'
 
-export default {
-  name: 'VueLogin',
-  components: {
-    Login
+  export default {
+    name: 'VueLogin',
+    components: {
+      Login
+    }
   }
-}
 </script>

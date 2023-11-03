@@ -3,12 +3,12 @@
 </template>
 
 <script>
-import Stats from '@/components/CompStatistiques.vue'
+  import Stats from '@/components/CompStatistiques.vue'
 
-export default {
-  name: 'VueStatistiques',
-  components: {
-    Stats
+  export default {
+    name: 'VueStatistiques',
+    components: {
+      Stats
+    }
   }
-}
 </script>

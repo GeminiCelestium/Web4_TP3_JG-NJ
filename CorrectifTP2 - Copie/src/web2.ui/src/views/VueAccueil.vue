@@ -6,13 +6,12 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import Accueil from '@/components/CompAccueil.vue'
+  import Accueil from '@/components/CompAccueil.vue'
 
-export default {
-  name: 'HomeView',
-  components: {
-    Accueil
+  export default {
+    name: 'HomeView',
+    components: {
+      Accueil
+    }
   }
-}
 </script>
