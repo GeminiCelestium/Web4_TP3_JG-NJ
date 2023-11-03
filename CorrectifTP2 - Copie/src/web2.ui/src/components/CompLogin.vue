@@ -4,19 +4,18 @@
   </div>
   <div class="login">
       <div>
-          <label for="usename"> Username: </label>
+          <label for="usename">Username : </label>
           <input type="email" name="username" id="username">
-      </div>
+      </div><br/>
       <div>
-          <label for="password"> Password: </label>
+          <label for="password">Password : </label>
           <input type="password" name="password" id="password">
-      </div>
+      </div><br/>
       <div><button @click="login">Se connecter</button></div>
   </div>
 </template>
     
-<script>
-  
+<script>  
   
   export default {
     name: 'VueLogin',

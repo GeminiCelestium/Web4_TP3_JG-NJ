@@ -1,9 +1,14 @@
 <template>
-  
+  <Login />
 </template>
 
 <script>
-  export default {
-    name: 'VueLogin',
+import Login from '@/components/CompLogin.vue'
+
+export default {
+  name: 'VueLogin',
+  components: {
+    Login
   }
+}
 </script>
