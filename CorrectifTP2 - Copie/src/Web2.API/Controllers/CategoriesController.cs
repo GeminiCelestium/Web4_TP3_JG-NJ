@@ -24,12 +24,12 @@ namespace Web2.API.Controllers
             _categoryBL = categoryBL;
         }
 
-        private static readonly List<Category> Categorys  = new List<Category>()
+        private static readonly List<CategoryDTO> Categorys  = new List<CategoryDTO>()
         {
-            new Category {Id = idSequence++, Name = "Festival"},
-            new Category {Id = idSequence++, Name = "Musique" }
-            new Category {Id = idSequence++, Name = "Sport" }
-            new Category {Id = idSequence++, Name = "Politique" }
+            new CategoryDTO {ID = idSequence++, Name = "Festival"},
+            new CategoryDTO {ID = idSequence++, Name = "Musique" },
+            new CategoryDTO {ID = idSequence++, Name = "Sport" },
+            new CategoryDTO {ID = idSequence++, Name = "Politique"}
         };
 
         // GET: api/<CategoriesController>

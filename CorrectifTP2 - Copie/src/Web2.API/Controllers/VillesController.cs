@@ -23,12 +23,12 @@ namespace Web2.API.Controllers
             _villeBL = villeBL;
         }
 
-        private static readonly List<Ville> Villes  = new List<Ville>()
+        private static readonly List<VilleDTO> Villes  = new List<VilleDTO>()
         {
-            new Ville {Id = idSequence++, Name = "Sherbrook"},
-            new Ville {Id = idSequence++, Name = "Trois-Rivieres" }
-            new Ville {Id = idSequence++, Name = "Québec" }
-            new Ville {Id = idSequence++, Name = "Montreal" }
+            new VilleDTO {ID = idSequence++, Name = "Sherbrook"},
+            new VilleDTO {ID = idSequence++, Name = "Trois-Rivieres" },
+            new VilleDTO {ID = idSequence++, Name = "Québec" },
+            new VilleDTO {ID = idSequence++, Name = "Montreal" }
         };
 
         // GET: api/<VillesController>

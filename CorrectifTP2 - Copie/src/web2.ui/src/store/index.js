@@ -37,6 +37,15 @@ export default createStore({
           return Promise.reject(error)
         })
     },
+    deleteEventApi(context, params) {
+      console.log(params)
+      httpClientEvent.delete(`/Event/${params.id}`)
+        .then(context.commit('deleteEvents', params.index))
+        .catch(error => {
+          console.log(error)
+          return Promise.reject(error)
+        })
+    },
   },
   modules: {
   }
