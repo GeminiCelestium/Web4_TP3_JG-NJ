@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import httpCLient from '@/api/httpClient'
+import httpClient from '@/api/event/httpClient'
 
 export default createStore({
   strict: true,
@@ -8,27 +8,35 @@ export default createStore({
     villes: [],
     categories: [],
   },
-  getters: {
-    getProgress(state) {
-      return (state.evenements.filter(t => t.done).length / state.evenements.length) * 100
-    }
+  getters: {  
   },
   mutations: {
-    setEvenements(state, evenements) {
-      state.evenements = evenements
-    },
-    createEvenement(state, evenement) {
-      state.evenements.push(evenement)
-    },
-    deleteEvenement(state, index) {
+    deleteEvents(state, index) {
       state.evenements.splice(index, 1)
     },
-    updateStatus(state, index) {
-      const evenement = state.evenements[index]
-      evenement.done = !evenement.done
-    }
+    setEvents(state, events) {
+      state.events = events
+    },
   },
   actions: {
+    getEventsApi(context, requestParams) {
+      return httpClient.get('/Events', {
+        params : {
+          pageIndex: requestParams?.pageIndex,
+          pageSize: requestParams?.pageSize,
+          filterString: requestParams?.filterString
+        }
+      })
+        .then(response => {
+          context.commit('setEvents', response.data.data)
+          return response.data
+          
+        })
+        .catch(error =>{
+          console.log(error)
+          return Promise.reject(error)
+        })
+    },
   },
   modules: {
   }
