@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const httpClient = axios.create( {
+const httpClientEvent = axios.create( {
     baseURL: process.env.VUE_APP_TODO_API_URL,
     timeout: 3000,
     auth: {
@@ -10,6 +10,6 @@ const httpClient = axios.create( {
 
 })
 
-httpClient.defaults.headers.post['Content-Type'] = 'application/json'
+httpClientEvent.defaults.headers.post['Content-Type'] = 'application/json'
 
-export default httpClient
+export default httpClientEvent

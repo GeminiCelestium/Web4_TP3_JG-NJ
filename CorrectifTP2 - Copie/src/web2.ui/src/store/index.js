@@ -1,5 +1,5 @@
 import { createStore } from 'vuex'
-import httpClient from '@/api/event/httpClient'
+import httpClientEvent from '@/api/event/httpClientEvent'
 
 export default createStore({
   strict: true,
@@ -20,7 +20,7 @@ export default createStore({
   },
   actions: {
     getEventsApi(context, requestParams) {
-      return httpClient.get('/Events', {
+      return httpClientEvent.get('/Events', {
         params : {
           pageIndex: requestParams?.pageIndex,
           pageSize: requestParams?.pageSize,

@@ -35,7 +35,7 @@ export default {
   },
   methods: {
     isAdmin() {
-      mainOidc.userprofile.role === 'admin'
+      mainOidc.userProfile.role === 'admin'
     }
   },
 }
