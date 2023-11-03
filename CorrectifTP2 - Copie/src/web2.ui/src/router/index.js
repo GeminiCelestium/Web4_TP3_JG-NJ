@@ -9,12 +9,12 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/evenements',
-    name: 'evenements',
+    path: '/evenements/:id/:action',
+    name: 'evenement',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/VueEvenements.vue'),    
+    component: () => import(/* webpackChunkName: "about" */ '@/components/CompEvenements.vue'),    
   },
   {
     path: '/statistiques',
@@ -22,7 +22,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/VueStatistiques.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/components/CompStatistiques.vue'),
   },
   {
     path: '/login',
@@ -30,7 +30,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/VueLogin.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/components/CompLogin'),
     /*meta: {
       authName: mainOidc.authName
     }*/

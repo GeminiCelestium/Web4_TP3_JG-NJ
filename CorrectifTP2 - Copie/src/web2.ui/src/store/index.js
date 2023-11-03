@@ -1,9 +1,12 @@
 import { createStore } from 'vuex'
+import httpCLient from '@/api/httpClient'
 
 export default createStore({
   strict: true,
   state: {
-    evenements: []
+    evenements: [],
+    villes: [],
+    categories: [],
   },
   getters: {
     getProgress(state) {
