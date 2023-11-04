@@ -45,42 +45,36 @@
     name: "CompEvenements",
     data() {
       return {
-        event: "",
-        ville: "",
-      }
+        event: {},
+        filter:{
+         filterString: '',
+          pageIndex : 1,
+           pageSize : 10,
+         },
+         pageCount : 5
+      };
+      
     },
     methods: {
       ...mapActions({
         getEventsApi: 'getEventsApi',
-        postEventApi: 'postEventApi',
-        getCategoriesApi: 'getCategoriesApi',
         deleteEventApi: 'deleteEventApi',
-        updateEventstatusApi: 'updateEventstatusApi'
       }),
       ...mapMutations({
         setEvents: 'setEvents',
-        createEvent: 'createEvent',
         deleteEvent: 'deleteEvent',
-        toggleEvent: 'updateStatus',
-        setCategories: 'setCategories'
       }),
-      addEvent() {
-        this.postEventApi(this.event).then((data) => {
-          this.event = {}
-          this.$toast.success(`la tache { id: ${data.id}, text: ${data.text}} a ete ajouté avec success :)`)
-        }).catch(() => this.$toast.error(`erreur de communication avec le serveur lors de l'ajout de la tache :(`))
-      },
-      loadEvents(){
+      /*loadEvents(){
         this.getEventsApi(this.filter).then(data => this.pageCount = data.pageCount).catch( () => this.$toast.error(`erreur de communication avec le serveur lors du chargement des taches :(`))
-      }
+      }*/
     },
     computed: {
       ...mapState({ Events: 'Events', categories: 'categories' }),
       ...mapGetters({ progress: 'getProgress' })
     },
     created() {
-      this.loadEvents()
-      this.getCategoriesApi().catch( () => this.$toast.error(`erreur de communication avec le serveur lors du chargement des categories :(`))
+     /* this.loadEvents()
+      this.getCategoriesApi().catch( () => this.$toast.error(`erreur de communication avec le serveur lors du chargement des categories :(`))*/
     },
     watch:{
       'filter.filterString'(){
