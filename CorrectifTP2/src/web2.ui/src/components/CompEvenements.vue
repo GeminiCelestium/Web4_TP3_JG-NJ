@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>{{ titre }}</h3>
-    <input type="text" placeholder="Entrer un titre ou une description" v-model="filter.filterString">
+    <input :class="{inputRecherche}" type="text" placeholder="Entrer un titre ou une description" v-model="filter.filterString"><br/>
     <table>
       <thead>
         <th>Titre</th>
@@ -13,15 +13,15 @@
         <th>Action</th>
       </thead>
       <tbody>
-        <tr :class="{ done: item.done }" v-for="(item, index) in events" :key="index">
+        <tr v-for="(item, index) in events" :key="index">
           <td>{{ item.Titre }}</td>
           <td>{{ villes.Name  }}</td>
+          <td>{{ item.Ville }}</td>
           <td>{{ item.Titre }}</td>
           <td>{{ item.Titre }}</td>
           <td>{{ item.Titre }}</td>
-          <td>{{ item.Titre }}</td>
-          <td>{{ item.Titre }}</td>
-          <td>{{ item.text }}</td>
+          <td>{{ item.Prix }}</td>
+          <td>{{ item.DateDebut }}</td>
           <td>            
             <button @click="$router.push(`/events/${item.id}/details`)"><i class="fas fa-users"></i></button>
             <button @click="$router.push(`/events/${item.id}/participer`)"><i class="fas fa-eye"></i></button>
@@ -29,10 +29,10 @@
           </td>
         </tr>
       </tbody>
-    </table>
+    </table><br/>
     <div>
       <button type="button" @click="filter.pageIndex--" :disabled="filter.pageIndex <= 1">précédent</button>
-        page {{ filter.pageIndex }} / {{ pageCount }}
+        Page {{ filter.pageIndex }} / {{ pageCount }}
       <button type="button" @click="filter.pageIndex++" :disabled="filter.pageIndex === pageCount">suivant</button>
     </div>
   </div>
@@ -57,29 +57,30 @@
     },
     methods: {
       ...mapActions({
+        getCategories: 'getCategoriesApi',
         getEventsApi: 'getEventsApi',
         deleteEventApi: 'deleteEventApi',
       }),
       ...mapMutations({
+        setCategories: 'setCategories',
         setEvents: 'setEvents',
         deleteEvent: 'deleteEvent',
       }),
       loadEvents() {
-    this.getEventsApi(this.filter)
-      .then(data => {
-        this.pageCount = data.pageCount;
-      })
-      .catch(error => {
-        console.error("Error loading events:", error);
-        this.$toast.error(`Erreur de communication avec le serveur lors du chargement des événements :(`);
-      });
-    },
-    
+        this.getEventsApi(this.filter)
+        .then(data => {
+          this.pageCount = data.pageCount;
+        })
+        .catch(error => {
+          console.error("Error loading events:", error);
+          this.$toast.error(`Erreur de communication avec le serveur lors du chargement des événements :(`);
+        });
+      }
+    },    
     computed: {
       ...mapState({ events: 'events' }),
       ...mapGetters({ progress: 'getProgress' })
     },
-
     watch:{
       'filter.filterString'(){
         this.filter.pageIndex = 1
@@ -87,18 +88,18 @@
       }
     }
   }
-}
 
 </script>
 
 <style scoped>
-.done {
-  background: rgb(7, 240, 7);
+.inputRecherche {
+  width: 200px;
 }
 
 button,
 [aria-label] {
   cursor: pointer;
+  background-color: #1C2933;
 }
 
 table {

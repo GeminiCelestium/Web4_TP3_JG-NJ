@@ -11,14 +11,28 @@ export default createStore({
   getters: {  
   },
   mutations: {
-    deleteEvent(state, index) {
-      state.evenements.splice(index, 1)
+    setVilles(state, villes) {
+      state.villes = villes
+    },
+    setCategories(state, categories) {
+      state.categories = categories
     },
     setEvents(state, events) {
       state.events = events
     },
+    deleteEvent(state, index) {
+      state.events.splice(index, 1)
+    },    
   },
   actions: {
+    getCategoriesApi(context) {
+      return httpClientEvent.get('/Categories')
+        .then(response => context.commit('setCategories', response.data))
+        .catch(error => {
+          console.log(error)
+          return Promise.reject(error)
+        })
+    },
     getEventsApi(context, requestParams) {
       return httpClientEvent.get('/api/Evenements', {
         params : {
