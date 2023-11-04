@@ -94,7 +94,12 @@
         return this.villes.filter(ville => ville.ID === this.item.VilleID);
       },
       participationsFiltrees() {
-        return this.participations.filter(participation => participation.EvenementId === this.item.ID);
+        if (!this.participations || this.participations.length === 0) {
+          return 0;
+        }
+        else {
+          return this.participations.filter(participation => participation.EvenementId === this.item.ID);
+        }        
       },
       categoriesFiltrees() {
         return this.categories.filter(categorie => categorie.ID === this.item.CategoryIDs);
