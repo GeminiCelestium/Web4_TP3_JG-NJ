@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const httpClientEvent = axios.create( {
-    baseURL: process.env.VUE_APP_TODO_API_URL,
+    baseURL: "https://localhost:7284/",
     timeout: 3000,
     auth: {
         username: 'janedoe',

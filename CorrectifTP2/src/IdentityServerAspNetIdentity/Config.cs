@@ -3,6 +3,7 @@
 
 
 using IdentityModel;
+using IdentityServer4;
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
@@ -36,19 +37,41 @@ namespace IdentityServerAspNetIdentity
             {
                 new Client
                 {
-                ClientId = "swagger_ui",
-                ClientName = "Swagger UI for dev",
-                ClientSecrets = {new Secret("secret".Sha256())}, // change me!
+                    ClientId = "swagger_ui",
+                    ClientName = "Swagger UI for dev",
+                    ClientSecrets = {new Secret("secret".Sha256())}, // change me!
 
-                AllowedGrantTypes = GrantTypes.Code,
-                RequirePkce = false,
-                RequireClientSecret = false,
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequirePkce = false,
+                    RequireClientSecret = false,
 
-                RedirectUris = {"https://localhost:7284/swagger/oauth2-redirect.html"},
-                AllowedCorsOrigins = {"https://localhost:7284"},
-                AllowedScopes = { "web2ApiScope", "scope2"}
-                }
-               
+                    RedirectUris = {"https://localhost:7284/swagger/oauth2-redirect.html"},
+                    AllowedCorsOrigins = {"https://localhost:7284"},
+                    AllowedScopes = { "web2ApiScope", "scope2"}
+                },
+
+                new Client
+                {
+                    ClientId = "web2_ui",
+                    ClientName = "Web2.UI Vuejs oidc client",
+                    ClientSecrets = { new Secret("secretTP3jdnj".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireClientSecret = false,
+                    RedirectUris = {
+                        "http://localhost:8080/auth/signinsilent/vuejs",
+                        "http://localhost:8080/auth/signinwin/vuejs",
+                        "http://localhost:8080/auth/signinpop/vuejs"
+                    },
+                    PostLogoutRedirectUris = {"http://localhost:8080/" },
+                    AllowedCorsOrigins = {"http://localhost:8080"},
+                    AllowedScopes = {
+                        "web2ApiScope",
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                    }
+                },
+
             };
+
     }
 }

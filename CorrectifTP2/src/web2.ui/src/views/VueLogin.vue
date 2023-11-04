@@ -1,5 +1,5 @@
 <template>
-  <Login />
+  <span login()></span>
 </template>
 
 <script>
@@ -9,6 +9,11 @@
     name: 'VueLogin',
     components: {
       Login
-    }
+    },
+    methods: {
+    login() {
+      this.$oidc.signIn();
+    },
+  },
   }
 </script>

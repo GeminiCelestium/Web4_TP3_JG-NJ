@@ -3,6 +3,7 @@
 
 
 using IdentityServer4;
+using IdentityServer4.Models;
 using IdentityServerAspNetIdentity.Data;
 using IdentityServerAspNetIdentity.Models;
 using Microsoft.AspNetCore.Builder;
@@ -12,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Collections.Generic;
 
 namespace IdentityServerAspNetIdentity
 {
@@ -69,35 +71,7 @@ namespace IdentityServerAspNetIdentity
                     options.ClientSecret = "copy client secret from Google here";
                 }
             );
-
-            services.AddIdentityServer()
-                .AddInMemoryClients(new List<Client>
-                {
-                    new Client
-                    {
-                        ClientId = "web2_ui",
-                        ClientName = "Web2.UI Vuejs oidc client",
-                        ClientSecrets = { new Secret("secretTP3jdnj".Sha256()) },
-                        AllowedGrantTypes = GrantTypes.Code,
-                        RequireClientSecret = false,
-                        RedirectUris = {
-                                        "http://localhost:8080/auth/signinsilent/vuejs",
-                                        "http://localhost:8080/auth/signinwin/vuejs",
-                                        "http://localhost:8080/auth/signinpop/vuejs"
-                                       },
-                        PostLogoutRedirectUris = {"http://localhost:8080/" },
-                        AllowedCorsOrigins = {"http://localhost:8080"},
-                        AllowedScopes = { "web2ApiScope",
-                                            IdentityServerConstants.StandardScopes.OpenId,
-                                            IdentityServerConstants.StandardScopes.Profile,
-                                        }
-                        },
-                })
-                .AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
-                .AddInMemoryApiResources(IdentityConfig.GetApiResources())
-                .AddInMemoryApiScopes(IdentityConfig.GetApiScopes())
-                .AddInMemoryClients(IdentityConfig.GetClients())
-                .AddDeveloperSigningCredential(); 
+            
         }
 
         public void Configure(IApplicationBuilder app)
