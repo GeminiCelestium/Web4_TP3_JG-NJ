@@ -12,11 +12,11 @@ namespace IdentityServerAspNetIdentity
     public static class Config
     {
         public static IEnumerable<IdentityResource> IdentityResources =>
-                   new IdentityResource[]
-                   {
+            new IdentityResource[]
+            {
                 new IdentityResources.OpenId(),
                 new IdentityResources.Profile()
-                   };
+            };
 
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
@@ -55,6 +55,7 @@ namespace IdentityServerAspNetIdentity
                     ClientId = "web2_ui",
                     ClientName = "Web2.UI Vuejs oidc client",
                     ClientSecrets = { new Secret("secretTP3jdnj".Sha256()) },
+
                     AllowedGrantTypes = GrantTypes.Code,
                     RequireClientSecret = false,
                     RedirectUris = {
@@ -62,6 +63,7 @@ namespace IdentityServerAspNetIdentity
                         "http://localhost:8080/auth/signinwin/vuejs",
                         "http://localhost:8080/auth/signinpop/vuejs"
                     },
+                    
                     PostLogoutRedirectUris = {"http://localhost:8080/" },
                     AllowedCorsOrigins = {"http://localhost:8080"},
                     AllowedScopes = {

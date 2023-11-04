@@ -10,7 +10,11 @@
             <router-link v-if="isAdmin" to="/statistiques">Statistiques</router-link>
           </div>
           <div>
-            <button @click="login()"><i class="fas fa-key"></i> Login</button>
+            <span @click="isAuthenticated ? logout() : login()">
+              <i class="fas" :class="isAuthenticated ? 'fa-sign-out' : 'fa-key'"></i>
+              {{ isAuthenticated ? 'Déconnexion' : 'Login' }}
+            </span>
+            <!--<span @click="login()"><i class="fas fa-key"></i> Login</span>-->
           </div>
         </nav>
       </slot>
@@ -27,19 +31,29 @@ import mainOidc from '@/api/authClient'
 export default {
   data() {
     return {
-      
+      isAuthenticated: false,
     };
   },
   computed: {
     
   },
   methods: {
-    isAdmin() {
-      mainOidc.userProfile.role === 'admin'
+    created() {
+      this.isAuthenticated = mainOidc.isAuthenticated();
     },
     login() {
       this.$oidc.signIn();
+    },    
+    isAdmin() {
+      mainOidc.userProfile.role === 'admin'
+    },    
+    isManager() {
+      mainOidc.userProfile.role === 'manager'
     },
+    logout() {
+      this.$oidc.signOut();
+    },
+    
   },
 }
 
@@ -54,7 +68,7 @@ export default {
     justify-content: space-between;
   }
   
-  nav a, button {
+  nav a, span {
     font-weight: bold;
     color: #75C5FF;
     margin: 10px;
