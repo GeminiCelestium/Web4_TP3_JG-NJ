@@ -4,14 +4,14 @@ import httpClientEvent from '@/api/event/httpClientEvent'
 export default createStore({
   strict: true,
   state: {
-    evenements: [],
+    events: [],
     villes: [],
     categories: [],
   },
   getters: {  
   },
   mutations: {
-    deleteEvents(state, index) {
+    deleteEvent(state, index) {
       state.evenements.splice(index, 1)
     },
     setEvents(state, events) {

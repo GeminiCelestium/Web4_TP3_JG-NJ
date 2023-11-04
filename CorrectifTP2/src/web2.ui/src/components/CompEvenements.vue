@@ -64,21 +64,30 @@
         setEvents: 'setEvents',
         deleteEvent: 'deleteEvent',
       }),
-      loadEvents(){
-        this.getEventsApi(this.filter).then(data => this.pageCount = data.pageCount).catch( () => this.$toast.error(`erreur de communication avec le serveur lors du chargement des taches :(`))
-      }
+      loadEvents() {
+    this.getEventsApi(this.filter)
+      .then(data => {
+        this.pageCount = data.pageCount;
+      })
+      .catch(error => {
+        console.error("Error loading events:", error);
+        this.$toast.error(`Erreur de communication avec le serveur lors du chargement des événements :(`);
+      });
     },
+    
     computed: {
       ...mapState({ events: 'events' }),
       ...mapGetters({ progress: 'getProgress' })
     },
+
     watch:{
       'filter.filterString'(){
         this.filter.pageIndex = 1
         this.loadEvents()
       }
     }
-  };
+  }
+}
 
 </script>
 
