@@ -19,10 +19,10 @@
       </thead>
       <tbody>
         <tr v-for="(event, index) in events" :key="index">
-          <td>{{ event.Titre }}</td>
+          <td>{{ event.titre }}</td>
           <td>
             <span v-for="ville in villesFiltrees" :key="ville.ID">
-              {{ ville.Name  }}
+              {{ ville.name }}
             </span>            
           </td>
           <td>
@@ -32,11 +32,11 @@
           </td>
           <td>
             <span v-for="categorie in categoriesFiltrees" :key="categorie.ID">
-              {{ categories.Name }}
+              {{ categories.name }}
             </span>
           </td>
-          <td>{{ event.Prix }}</td>
-          <td>{{ event.DateDebut }}</td>
+          <td>{{ event.prix }}</td>
+          <td>{{ event.dateDebut }}</td>
           <td>            
             <button @click="$router.push(`/events/${event.id}/details`)"><i class="fas fa-users"></i></button> | 
             <button @click="$router.push(`/events/${event.id}/participer`)"><i class="fas fa-eye"></i></button> | 
@@ -85,6 +85,7 @@
         this.getEventsApi(this.filter)
         .then(data => {          
           this.pageCount = data.pageCount;
+          console.log(data)//pour voir data 
         })
         .catch(error => {
           console.error("Error loading events:", error);
@@ -96,18 +97,18 @@
       ...mapState({ events: 'events', categories: 'categories', villes: 'villes', participations: 'participations' }),
       ...mapGetters({  }),
       villesFiltrees() {
-        return this.villes.filter(ville => ville.ID === this.event.VilleID);
+        return this.villes.filter(ville => ville.ID === this.event.villeID);
       },
       participationsFiltrees() {
         if (!this.participations || this.participations.length === 0) {
           return 0;
         }
         else {
-          return this.participations.filter(participation => participation.EvenementId === this.event.ID);
+          return this.participations.filter(participation => participation.evenementId === this.event.ID);
         }        
       },
       categoriesFiltrees() {
-        return this.categories.filter(categorie => categorie.ID === this.event.CategoryIDs);
+        return this.categories.filter(categorie => categorie.ID === this.event.categoryIDs);
       },
     },
     created() {
