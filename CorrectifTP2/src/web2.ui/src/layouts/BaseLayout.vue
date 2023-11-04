@@ -10,7 +10,7 @@
             <router-link v-if="isAdmin" to="/statistiques">Statistiques</router-link>
           </div>
           <div>
-            <router-link to="/login"><i class="fas fa-key"></i> Login</router-link>
+            <button @click="login()"><i class="fas fa-key"></i> Login</button>
           </div>
         </nav>
       </slot>
@@ -37,6 +37,9 @@ export default {
     isAdmin() {
       mainOidc.userProfile.role === 'admin'
     },
+    login() {
+      this.$oidc.signIn();
+    },
   },
 }
 
@@ -51,7 +54,7 @@ export default {
     justify-content: space-between;
   }
   
-  nav a {
+  nav a, button {
     font-weight: bold;
     color: #75C5FF;
     margin: 10px;
