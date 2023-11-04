@@ -29,11 +29,11 @@ namespace Web2.API.Controllers
             _evenementBL = evenementBL;
         }
 
-        private static readonly List<EvenementDTO> Events = new List<EvenementDTO>()
+       private static readonly List<EvenementDTO> Events = new List<EvenementDTO>()
         {
-            new EvenementDTO {ID = idSequence++, Titre = "Jazz Fest", VilleID = 1, Organisateur = "Def Jam",DateDebut = DateTime.Parse("2022-08-08T10:00:00"), DateFin = DateTime.Parse("2022-08-10T10:00:00"), Prix = 100.00, CategoryIDs = {1,2 } , Description = "Festival de Jazz"},
-            new EvenementDTO {ID = idSequence++, Titre = "Grand Prix" ,VilleID = 2, Organisateur = "7 ieme Ciel",DateDebut = DateTime.Parse("2022-08-08T10:00:00"), DateFin = DateTime.Parse("2022-08-10T10:00:00"), Prix = 70.00, CategoryIDs = {1,2 } , Description = "Festival de Rap"}
-        };
+            new EvenementDTO {ID = idSequence++, Titre = "Jazz Fest", VilleID = 1, Organisateur = "Def Jam",DateDebut = DateTime.Parse("2022-08-08T10:00:00"), DateFin = DateTime.Parse("2022-08-10T10:00:00"), Prix = 100.00, Description = "Festival de Jazz"},
+            new EvenementDTO {ID = idSequence++, Titre = "Grand Prix" ,VilleID = 2, Organisateur = "7 ieme Ciel",DateDebut = DateTime.Parse("2022-08-08T10:00:00"), DateFin = DateTime.Parse("2022-08-10T10:00:00"), Prix = 70.00 , Description = "Festival de Rap"}
+        };// ne pas oublier categoryIDs
 
         [HttpGet]
         public Pageable<EvenementDTO> GetAll(string filterString, int pageIndex = 1, int pageSize = 5)
