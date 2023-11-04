@@ -37,7 +37,7 @@ namespace Web2.API.Controllers
         [ProducesResponseType(typeof(List<CategoryDTO>), StatusCodes.Status200OK)]
         public IEnumerable<CategoryDTO> Get()
         {
-            return _categoryBL.GetList();
+            return Categorys;
         }
 
         // GET api/<CategoriesController>/5
