@@ -25,13 +25,21 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '../components/CompEvenements.vue')
       },
       {
-        path: ':id/:action',
+        path: ':id/details',
         name: 'event',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../components/CompDetailsEvenement.vue')
-      }
+      },
+      {
+        path: ':id/participer',
+        name: 'event',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../components/CompParticiperEvenement.vue')
+      },
     ]    
   },
   {

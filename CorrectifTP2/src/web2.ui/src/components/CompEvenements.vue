@@ -1,20 +1,25 @@
 <template>
   <div>
     <h3>{{ titre }}</h3>
-    <input :class="{inputRecherche}" type="text" placeholder="Entrer un titre ou une description" v-model="filter.filterString"><br/>
+    <ul>      
+      <input style="width: 300px;" type="text" placeholder="Entrer un titre ou une description" v-model="filter.filterString"> | 
+      <button>
+        <i class="fas fa-search"></i>
+      </button>      
+    </ul>    
     <table>
       <thead>
-        <th>Titre</th>
-        <th>Ville</th>
-        <th>Nbr Participation(s)</th>
-        <th>Catégories</th>
-        <th>Prix</th>
-        <th>Date</th>
-        <th>Action</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Ville</th>
+        <th scope="col">Nbr Participation(s)</th>
+        <th scope="col">Catégories</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in events" :key="index">
-          <td>{{ item.Titre }}</td>
+        <tr v-for="(event, index) in events" :key="index">
+          <td>{{ event.Titre }}</td>
           <td>
             <span v-for="ville in villesFiltrees" :key="ville.ID">
               {{ ville.Name  }}
@@ -30,12 +35,12 @@
               {{ categories.Name }}
             </span>
           </td>
-          <td>{{ item.Prix }}</td>
-          <td>{{ item.DateDebut }}</td>
+          <td>{{ event.Prix }}</td>
+          <td>{{ event.DateDebut }}</td>
           <td>            
-            <button @click="$router.push(`/events/${item.id}/details`)"><i class="fas fa-users"></i></button>
-            <button @click="$router.push(`/events/${item.id}/participer`)"><i class="fas fa-eye"></i></button>
-            <button @click="deleteEventApi({id: item.id, 'index': index})"><i class="fas fa-trash"></i></button>
+            <button @click="$router.push(`/events/${event.id}/details`)"><i class="fas fa-users"></i></button> | 
+            <button @click="$router.push(`/events/${event.id}/participer`)"><i class="fas fa-eye"></i></button> | 
+            <button @click="deleteEventApi({id: event.id, 'index': index})"><i class="fas fa-trash"></i></button>
           </td>
         </tr>
       </tbody>
@@ -78,7 +83,7 @@
       }),
       loadEvents() {
         this.getEventsApi(this.filter)
-        .then(data => {
+        .then(data => {          
           this.pageCount = data.pageCount;
         })
         .catch(error => {
@@ -91,18 +96,18 @@
       ...mapState({ events: 'events', categories: 'categories', villes: 'villes', participations: 'participations' }),
       ...mapGetters({  }),
       villesFiltrees() {
-        return this.villes.filter(ville => ville.ID === this.item.VilleID);
+        return this.villes.filter(ville => ville.ID === this.event.VilleID);
       },
       participationsFiltrees() {
         if (!this.participations || this.participations.length === 0) {
           return 0;
         }
         else {
-          return this.participations.filter(participation => participation.EvenementId === this.item.ID);
+          return this.participations.filter(participation => participation.EvenementId === this.event.ID);
         }        
       },
       categoriesFiltrees() {
-        return this.categories.filter(categorie => categorie.ID === this.item.CategoryIDs);
+        return this.categories.filter(categorie => categorie.ID === this.event.CategoryIDs);
       },
     },
     created() {
@@ -119,14 +124,9 @@
 </script>
 
 <style scoped>
-.inputRecherche {
-  width: 200px;
-}
-
 button,
 [aria-label] {
   cursor: pointer;
-  background-color: #1C2933;
 }
 
 table {

@@ -54,7 +54,7 @@ export default createStore({
     deleteEventApi(context, params) {
       console.log(params)
       httpClientEvent.delete(`/api/Evenements/${params.id}`)
-        .then(context.commit('deleteEvents', params.index))
+        .then(context.commit('deleteEvent', params.index))
         .catch(error => {
           console.log(error)
           return Promise.reject(error)
