@@ -1,10 +1,8 @@
 <template>
   <div>
     <h1>Statistique de la plateforme</h1>
-    <p>
-      Contenu de la page de statistiques.
-      Normalement, seulement disponible en tant qu'Admin mais l'OIDC ne fonctione pas.
-    </p>
+    <ul>Contenu de la page de statistiques (Aucunement eu le temps de le faire).</ul>
+    <ul>Normalement, seulement disponible en tant qu'Admin mais l'OIDC ne fonctione pas.</ul>
   </div>
 </template>
     
