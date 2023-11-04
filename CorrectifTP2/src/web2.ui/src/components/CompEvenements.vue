@@ -81,6 +81,9 @@
       ...mapState({ events: 'events' }),
       ...mapGetters({ progress: 'getProgress' })
     },
+    created() {
+      this.loadEvents()
+    },
     watch:{
       'filter.filterString'(){
         this.filter.pageIndex = 1

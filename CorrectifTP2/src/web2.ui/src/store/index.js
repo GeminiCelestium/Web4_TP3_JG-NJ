@@ -26,7 +26,7 @@ export default createStore({
   },
   actions: {
     getCategoriesApi(context) {
-      return httpClientEvent.get('/Categories')
+      return httpClientEvent.get('/api/Categories')
         .then(response => context.commit('setCategories', response.data))
         .catch(error => {
           console.log(error)
@@ -53,7 +53,7 @@ export default createStore({
     },
     deleteEventApi(context, params) {
       console.log(params)
-      httpClientEvent.delete(`/Event/${params.id}`)
+      httpClientEvent.delete(`/api/Evenements/${params.id}`)
         .then(context.commit('deleteEvents', params.index))
         .catch(error => {
           console.log(error)
