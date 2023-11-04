@@ -5,8 +5,6 @@
 </template>
   
 <script>
-//import EventList from '@/components/CompEvenements.vue'
-
   export default {
     name: 'VueEvenements',
   };

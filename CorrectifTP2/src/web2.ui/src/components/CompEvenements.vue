@@ -64,17 +64,13 @@
         setEvents: 'setEvents',
         deleteEvent: 'deleteEvent',
       }),
-      /*loadEvents(){
+      loadEvents(){
         this.getEventsApi(this.filter).then(data => this.pageCount = data.pageCount).catch( () => this.$toast.error(`erreur de communication avec le serveur lors du chargement des taches :(`))
-      }*/
+      }
     },
     computed: {
-      ...mapState({ Events: 'Events', categories: 'categories' }),
+      ...mapState({ events: 'events' }),
       ...mapGetters({ progress: 'getProgress' })
-    },
-    created() {
-     /* this.loadEvents()
-      this.getCategoriesApi().catch( () => this.$toast.error(`erreur de communication avec le serveur lors du chargement des categories :(`))*/
     },
     watch:{
       'filter.filterString'(){
