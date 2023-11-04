@@ -17,8 +17,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("http://localhost:8080/",
-                                              "http://127.0.0.1:8080");
+                          policy.WithOrigins("http://localhost:8080", "https://localhost:7284").AllowAnyHeader().AllowAnyMethod();
                       });
 });
 var connectionString = builder.Configuration.GetConnectionString("EventDB");
