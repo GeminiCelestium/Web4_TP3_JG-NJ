@@ -80,27 +80,24 @@ namespace IdentityServerAspNetIdentity
                         ClientSecrets = { new Secret("secretTP3jdnj".Sha256()) },
                         AllowedGrantTypes = GrantTypes.Code,
                         RequireClientSecret = false,
-                        RedirectUris = new List<string>
-                        {
-                            "http://localhost:8080/auth/signinsilent/vuejs",
-                            "http://localhost:8080/auth/signinwin/vuejs",
-                            "http://localhost:8080/auth/signinpop/vuejs"
+                        RedirectUris = {
+                                        "http://localhost:8080/auth/signinsilent/vuejs",
+                                        "http://localhost:8080/auth/signinwin/vuejs",
+                                        "http://localhost:8080/auth/signinpop/vuejs"
+                                       },
+                        PostLogoutRedirectUris = {"http://localhost:8080/" },
+                        AllowedCorsOrigins = {"http://localhost:8080"},
+                        AllowedScopes = { "web2ApiScope",
+                                            IdentityServerConstants.StandardScopes.OpenId,
+                                            IdentityServerConstants.StandardScopes.Profile,
+                                        }
                         },
-                        PostLogoutRedirectUris = new List<string> { "http://localhost:8080/" },
-                        AllowedCorsOrigins = new List<string> { "http://localhost:8080" },
-                        AllowedScopes = new List<string>
-                        {
-                            "web2ApiScope",
-                            IdentityServerConstants.StandardScopes.OpenId,
-                            IdentityServerConstants.StandardScopes.Profile
-                        }
-                    }
                 })
                 .AddInMemoryIdentityResources(IdentityConfig.GetIdentityResources())
                 .AddInMemoryApiResources(IdentityConfig.GetApiResources())
                 .AddInMemoryApiScopes(IdentityConfig.GetApiScopes())
                 .AddInMemoryClients(IdentityConfig.GetClients())
-                .AddDeveloperSigningCredential(); // You should replace this with a production-ready certificate in a real environment
+                .AddDeveloperSigningCredential(); 
         }
 
         public void Configure(IApplicationBuilder app)
