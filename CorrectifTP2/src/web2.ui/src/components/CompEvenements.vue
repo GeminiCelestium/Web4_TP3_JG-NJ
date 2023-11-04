@@ -15,11 +15,17 @@
       <tbody>
         <tr v-for="(item, index) in events" :key="index">
           <td>{{ item.Titre }}</td>
-          <td>{{ villes.Name  }}</td>
-          <td>{{ item.Ville }}</td>
-          <td>{{ item.Titre }}</td>
-          <td>{{ item.Titre }}</td>
-          <td>{{ item.Titre }}</td>
+          <td>
+            <span v-for="ville in villesFiltrees" :key="ville.id">
+              {{ ville.Name  }}
+            </span>            
+          </td>
+          <td>
+            <span v-for="participation in participationsFiltrees" :key="participation.id">
+              {{ participation.NombrePlace }}
+            </span>
+          </td>
+          <td>{{ categories.Name }}</td>
           <td>{{ item.Prix }}</td>
           <td>{{ item.DateDebut }}</td>
           <td>            
@@ -78,8 +84,14 @@
       }
     },    
     computed: {
-      ...mapState({ events: 'events' }),
-      ...mapGetters({ progress: 'getProgress' })
+      ...mapState({ events: 'events', categories: 'categories', villes: 'villes', participations: 'participations' }),
+      ...mapGetters({  }),
+      villesFiltrees() {
+        return this.villes.filter(ville => ville.id === this.index);
+      },
+      participationsFiltrees() {
+        return this.participations.filter(participation => participation.id === this.index);
+      },
     },
     created() {
       this.loadEvents()

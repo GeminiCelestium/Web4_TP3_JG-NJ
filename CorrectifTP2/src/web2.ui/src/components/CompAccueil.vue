@@ -1,15 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>
-      Voici notre TP3. Nous vous prévenons tout de suite qu'il ne sera pas complet.
-      Considérant le délai de 1 semaine pour faire le TP;
-      et sachant que nous avions également une présentation de 30 minutes, un rapport d'environ 8 pages et un TP en Déploiement Infonuagique
-      à remettre avant de pouvoir penser au TP3.
-      De plus, nous avions des problèmes et nous avons essayé de vous contacter vendredi (journée de la remise) mais vous n'étiez pas connecté.
-      De ce fait, malgré le fait que nous allons le remettre le 3 novembre, nous allons continuer de travailler dessus ce week-end.
-      Comme ça, si vous acceptez de nous laisser plus de temps, nous aurons un travail de meilleure qualité à remettre.
-    </p>
+    
     <h3>Présentation du TP3</h3><br/>
     <p>
       Ce projet permet d'afficher une liste d'évènements.
