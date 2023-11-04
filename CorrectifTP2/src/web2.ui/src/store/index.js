@@ -20,7 +20,7 @@ export default createStore({
   },
   actions: {
     getEventsApi(context, requestParams) {
-      return httpClientEvent.get('/Events', {
+      return httpClientEvent.get('/api/Evenements', {
         params : {
           pageIndex: requestParams?.pageIndex,
           pageSize: requestParams?.pageSize,
