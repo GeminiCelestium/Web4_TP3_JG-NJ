@@ -10,9 +10,17 @@ using Web2.API.Extenstions;
 using Web2.API.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 // Add services to the container.
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:8080/",
+                                              "http://127.0.0.1:8080");
+                      });
+});
 var connectionString = builder.Configuration.GetConnectionString("EventDB");
 builder.Services.AddDbContext<EventPlatformDbContext>(options => options.UseNpgsql(connectionString));
 
@@ -54,7 +62,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthentication();
 app.UseAuthorization();
 
