@@ -20,6 +20,9 @@ export default createStore({
     setEvents(state, events) {
       state.events = events
     },
+    setParticipations(state, participations) {
+      state.participations = participations
+    },
     deleteEvent(state, index) {
       state.events.splice(index, 1)
     },    
@@ -28,6 +31,22 @@ export default createStore({
     getCategoriesApi(context) {
       return httpClientEvent.get('/api/Categories')
         .then(response => context.commit('setCategories', response.data))
+        .catch(error => {
+          console.log(error)
+          return Promise.reject(error)
+        })
+    },
+    getVillesApi(context) {
+      return httpClientEvent.get('/api/Villes')
+        .then(response => context.commit('setVilles', response.data))
+        .catch(error => {
+          console.log(error)
+          return Promise.reject(error)
+        })
+    },
+    getParticipationsApi(context) {
+      return httpClientEvent.get('/api/Participations')
+        .then(response => context.commit('setParticipations', response.data))
         .catch(error => {
           console.log(error)
           return Promise.reject(error)
