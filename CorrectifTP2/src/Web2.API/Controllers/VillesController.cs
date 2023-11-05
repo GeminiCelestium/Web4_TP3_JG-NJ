@@ -35,7 +35,7 @@ namespace Web2.API.Controllers
         [HttpGet]
         public IEnumerable<VilleDTO> GetAll(bool orderByPopularity = false)
         {
-            return _villeBL.GetList(orderByPopularity);
+            return Villes(orderByPopularity);
         }
 
         // GET api/<VillesController>/5
