@@ -1,19 +1,19 @@
 <template>
-    <div>
-      <h1>Formulaire Participation</h1>
-    </div>
-  </template>
+  <div>
+    <h1>Formulaire Participation</h1>
+  </div>
+</template>
       
-  <script>
+<script>
   
   
-    export default {
-      name: 'CompParticiperEvenement',
-      /*mounted() {
+  export default {
+    name: 'CompParticiperEvenement',
+    /*mounted() {
         
-        if (!this.$oidc.isAuthenticated) {
-          this.$oidc.signIn(); 
-        }
-      },*/
-    };
-  </script>
+      if (!this.$oidc.isAuthenticated) {
+        this.$oidc.signIn(); 
+      }
+    },*/
+  };
+</script>

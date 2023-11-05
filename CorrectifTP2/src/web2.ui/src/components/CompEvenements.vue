@@ -38,8 +38,8 @@
           <td>{{ event.prix }}</td>
           <td>{{ event.dateDebut }}</td>
           <td>            
-            <button @click="$router.push(`/events/${event.id}/details`)"><i class="fas fa-users"></i></button> | 
-            <button @click="$router.push(`/events/${event.id}/participer`)"><i class="fas fa-eye"></i></button> | 
+            <button @click="$router.push(`/evenements/${event.id}/participer`)"><i class="fas fa-users"></i></button> | 
+            <button @click="$router.push(`/evenements/${event.id}/details`)"><i class="fas fa-eye"></i></button> | 
             <button @click="deleteEventApi({id: event.id, 'index': index})"><i class="fas fa-trash"></i></button>
           </td>
         </tr>
