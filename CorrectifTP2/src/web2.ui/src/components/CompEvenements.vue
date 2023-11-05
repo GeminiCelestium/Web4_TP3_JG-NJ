@@ -35,7 +35,7 @@
               {{ getCategoryNames(event.categoryIDs) }}
             </span>
           </td>
-          <td>{{ event.prix }}</td>
+          <td>{{ event.prix }} $</td>
           <td>{{ event.dateDebut }}</td>
           <td>            
             <button @click="$router.push(`/evenements/${event.id}/participer`)"><i class="fas fa-users"></i></button> | 
