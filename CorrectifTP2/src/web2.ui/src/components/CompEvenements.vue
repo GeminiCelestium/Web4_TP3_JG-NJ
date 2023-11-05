@@ -31,9 +31,9 @@
             </span>
           </td>
           <td>
-            <span v-for="categorie in categoriesFiltrees" :key="categorie.ID">
-              {{ categories.name }}
-            </span>
+            <span v-for="categoryID in event.categoryIDs" :key="categoryID">
+              {{ getCategoryNames(event.categoryIDs) }}
+</span>
           </td>
           <td>{{ event.prix }}</td>
           <td>{{ event.dateDebut }}</td>
@@ -61,6 +61,7 @@
     data() {
       return {
         event: {},
+        
         filter:{
          filterString: '',
           pageIndex : 1,
@@ -85,13 +86,27 @@
         this.getEventsApi(this.filter)
         .then(data => {          
           this.pageCount = data.pageCount;
-          console.log(data)//pour voir data 
+          //console.log(data)//pour voir data 
         })
         .catch(error => {
           console.error("Error loading events:", error);
           this.$toast.error(`Erreur de communication avec le serveur lors du chargement des événements :(`);
         });
-      }
+      },
+      getCategoryNames(categoryIDs) {
+    if (!categoryIDs || categoryIDs.length === 0) {
+      return 'No Categories';
+    }
+    const categoryNames = categoryIDs.map(categoryID => {
+      const category = this.categories.find(category => category.ID === categoryID);
+      console.log(this.categoryID)
+      return category ? category.name : 'Category Not Found';
+    });
+    
+    return categoryNames.join(', ');
+    
+  }
+
     },    
     computed: {
       ...mapState({ events: 'events', categories: 'categories', villes: 'villes', participations: 'participations' }),
