@@ -46,9 +46,9 @@
       </tbody>
     </table><br/>
     <div>
-      <button type="button" @click="filter.pageIndex--" :disabled="filter.pageIndex <= 1">précédent</button>
+      <button type="button" @click="filter.pageIndex--" :disabled="filter.pageIndex <= 1">Précédent</button>
         Page {{ filter.pageIndex }} / {{ pageCount }}
-      <button type="button" @click="filter.pageIndex++" :disabled="filter.pageIndex === pageCount">suivant</button>
+      <button type="button" @click="filter.pageIndex++" :disabled="filter.pageIndex === pageCount">Suivant</button>
     </div>
   </div>
 </template>

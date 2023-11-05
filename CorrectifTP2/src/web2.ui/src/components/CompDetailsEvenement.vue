@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Détail événement</h1>
+    <h1>Détails Evènement</h1>
     <form>
       <div class="beau-paragraphe">
         <div>
@@ -31,7 +31,7 @@
           <textarea id="description" name="description" :value="selectedEvent.description" disabled></textarea>
         </div>
         <div class="validation">
-          <button type="button" @click="$router.push(`/evenements`)">Retour</button>
+          <button type="button" @click="$router.push(`/evenements`)"><i class="fa-sharp fa-solid fa-angle-left"></i> Retour</button>
         </div>
       </div>
     </form>

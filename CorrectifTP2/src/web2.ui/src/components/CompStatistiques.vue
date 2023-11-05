@@ -11,11 +11,6 @@
 
   export default {
     name: 'CompStatistiques',
-    /*mounted() {
-      if (!this.$oidc.isAuthenticated) {
-        this.$oidc.signIn(); 
-      }
-    },*/
   };
 </script>
     

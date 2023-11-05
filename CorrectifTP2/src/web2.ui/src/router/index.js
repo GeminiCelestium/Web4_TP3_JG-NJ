@@ -58,10 +58,25 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '@/components/CompLogin'),
-    /*meta: {
-      authName: mainOidc.authName
-    }*/
-  }
+    children: [
+      {
+        path: '/profile',
+        name: 'profile',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../components/CompProfile.vue')
+      },      
+    ] 
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '@/components/CompProfile.vue'),
+  },// Existe seulement pour pouvoir voir la page malgré le fait que Login ne fonctionne pas totalement.
 ]
 
 const router = createRouter({

@@ -12,7 +12,6 @@
           <div>
             <span @click="isAuthenticated ? logout() : login()">
               <i class="fas" :class="isAuthenticated ? 'fa-sign-out' : 'fa-key'"></i>
-              {{ isAuthenticated ? 'Déconnexion' : 'Login' }}
             </span>
             <!--<span @click="login()"><i class="fas fa-key"></i> Login</span>-->
           </div>
