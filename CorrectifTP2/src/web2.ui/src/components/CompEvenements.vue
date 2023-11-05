@@ -33,7 +33,7 @@
           <td>
             <span v-for="categoryID in event.categoryIDs" :key="categoryID">
               {{ getCategoryNames(event.categoryIDs) }}
-</span>
+            </span>
           </td>
           <td>{{ event.prix }}</td>
           <td>{{ event.dateDebut }}</td>
@@ -60,14 +60,15 @@
     name: "CompEvenements",
     data() {
       return {
+        
         event: {},
         
         filter:{
-         filterString: '',
+          filterString: '',
           pageIndex : 1,
-           pageSize : 10,
-         },
-         pageCount : 5
+          pageSize : 10,
+        },
+        pageCount : 5,
       };
       
     },
