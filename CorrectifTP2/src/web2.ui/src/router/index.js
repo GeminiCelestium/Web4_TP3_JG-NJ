@@ -18,28 +18,29 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'eventList',
+        name: 'listeEvent',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../components/CompEvenements.vue')
       },
       {
-        path: ':id/details',
-        name: 'event',
-        // route level code-splitting
-        // this generates a separate chunk (about.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
-        component: () => import(/* webpackChunkName: "about" */ '../components/CompDetailsEvenement.vue')
-      },
-      {
         path: ':id/participer',
-        name: 'event',
+        name: 'participerEvent',
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import(/* webpackChunkName: "about" */ '../components/CompParticiperEvenement.vue')
       },
+      {
+        path: ':id/details',
+        name: 'detailsEvent',
+        // route level code-splitting
+        // this generates a separate chunk (about.[hash].js) for this route
+        // which is lazy-loaded when the route is visited.
+        component: () => import(/* webpackChunkName: "about" */ '../components/CompDetailsEvenement.vue')
+      },
+      
     ]    
   },
   {
