@@ -72,7 +72,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.beau-paragraphe {
+  .beau-paragraphe {
     text-align: justify;
     text-align-last: left;
     font-size: 18px;
@@ -84,25 +84,30 @@ export default {
     background-color: #ffffff;
     border: 1px solid #494949;
     border-radius: 5px;
-}
+  }
 
-.sizes {
+  .sizes {
     .p-inputtext {
-        display: block;
-        margin-bottom: .5rem;
+      display: block;
+      margin-bottom: .5rem;
 
-        &:last-child {
-            margin-bottom: 0;
-        }
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
-}
+  }
 
-.p-dropdown {
+  .p-dropdown {
     width: 14rem;
-}
+  }
 
-.validation {
+  .validation {
     text-align: justify;
     text-align-last: right;
-}
+  }
+
+  input {
+    margin-left: 10px;
+    margin-right: 15px;
+  }
 </style>
