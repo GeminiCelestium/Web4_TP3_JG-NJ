@@ -2,8 +2,8 @@
   <div>
     <h3>{{ titre }}</h3>
     <ul>      
-      <input style="width: 300px;" type="text" placeholder="Entrer un titre ou une description" v-model="filter.filterString"> | 
-      <button>
+      <input style="width: 300px;" type="text" placeholder="Entrer un titre ou une description" v-model="texteRecherche"> | 
+      <button @click="rechercher">
         <i class="fas fa-search"></i>
       </button>      
     </ul>    
@@ -69,6 +69,9 @@
           pageSize : 10,
         },
         pageCount : 5,
+
+        texteRecherche : "",
+
       };
       
     },
@@ -95,18 +98,22 @@
         });
       },
       getCategoryNames(categoryIDs) {
-    if (!categoryIDs || categoryIDs.length === 0) {
-      return 'No Categories';
-    }
-    const categoryNames = categoryIDs.map(categoryID => {
-      const category = this.categories.find(category => category.ID === categoryID);
-      console.log(this.categoryID)
-      return category ? category.name : 'Category Not Found';
-    });
-    
-    return categoryNames.join(', ');
-    
-  }
+        if (!categoryIDs || categoryIDs.length === 0) {
+          return 'No Categories';
+        }
+        const categoryNames = categoryIDs.map(categoryID => {
+          const category = this.categories.find(category => category.ID === categoryID);
+          console.log(this.categoryID)
+          return category ? category.name : 'Category Not Found';
+        });
+        
+        return categoryNames.join(', ');        
+      },
+      rechercher() {
+        this.filter.filterString = this.texteRecherche
+        this.filter.pageIndex = 1
+        this.loadEvents()
+      }
 
     },    
     computed: {
