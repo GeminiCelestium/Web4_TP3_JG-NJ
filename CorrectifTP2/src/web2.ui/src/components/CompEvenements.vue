@@ -98,17 +98,15 @@
         });
       },
       getCategoryNames(categoryIDs) {
-        if (!categoryIDs || categoryIDs.length === 0) {
-          return 'No Categories';
-        }
-        const categoryNames = categoryIDs.map(categoryID => {
-          const category = this.categories.find(category => category.ID === categoryID);
-          console.log(this.categoryID)
-          return category ? category.name : 'Category Not Found';
-        });
-        
-        return categoryNames.join(', ');        
-      },
+    const categoryNames = [];
+    for (const categoryID of categoryIDs) {
+      const category = this.categories.find(category => category.ID === categoryID);
+      if (category) {
+        categoryNames.push(category.name);
+      }
+    }
+    return categoryNames.length > 0 ? categoryNames : ['On a les Ids mais pas les Noms...'];
+  },
       rechercher() {
         this.filter.filterString = this.texteRecherche
         this.filter.pageIndex = 1
