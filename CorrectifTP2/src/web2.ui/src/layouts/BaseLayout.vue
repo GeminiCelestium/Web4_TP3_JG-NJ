@@ -11,7 +11,7 @@
           </div>
           <div>
             <span @click="isAuthenticated ? logout() : login()">
-              <i class="fas" :class="isAuthenticated ? 'fa-sign-out' : 'fa-key'"></i>
+              <i class="fas" :class="isAuthenticated ? 'fa-sign-out' : 'fa-key'"></i> Login
             </span>
             <!--<span @click="login()"><i class="fas fa-key"></i> Login</span>-->
           </div>
