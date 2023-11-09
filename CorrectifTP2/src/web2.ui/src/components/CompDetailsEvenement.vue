@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapState , mapActions, mapMutations } from 'vuex';
+import { mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'CompDetailsEvenement',
@@ -55,19 +55,11 @@ export default {
     ...mapMutations({        
       setEvent: 'setEvent',     
     }),
-    loadEvent(eventId) {
-    this.getEventIDApi(eventId)
-      .then(data => {
-        console.log(data);
-      })
-      
-  },
   },
   created() {
-   this.loadEvent(this.$route.params.id);
+   this.getEventIDApi(this.$route.params.id);
   },
   computed: {
-     ...mapState(['categories']),
  }
 };
 </script>
