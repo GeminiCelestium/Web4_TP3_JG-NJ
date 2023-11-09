@@ -1,12 +1,13 @@
 <template>
   <div>
     <h3>{{ titre }}</h3>
-    <ul>      
-      <input style="width: 300px;" type="text" placeholder="Entrer un titre ou une description" v-model="texteRecherche"> | 
+    <ul>
+      <input style="width: 300px;" type="text" placeholder="Entrer un titre ou une description" v-model="texteRecherche">
+      |
       <button @click="rechercher">
         <i class="fas fa-search"></i>
-      </button>      
-    </ul>    
+      </button>
+    </ul>
     <table>
       <thead>
         <th scope="col">Titre</th>
@@ -21,9 +22,7 @@
         <tr v-for="(event, index) in events" :key="index">
           <td>{{ event.titre }}</td>
           <td>
-            <span v-for="ville in villesFiltrees" :key="ville.ID">
-              {{ ville.name }}
-            </span>            
+            {{ getCityName(event.villeID) }}
           </td>
           <td>
             <span v-for="participation in participationsFiltrees" :key="participation.ID">
@@ -31,112 +30,125 @@
             </span>
           </td>
           <td>
-            <div v-for="event in events" :key="event.id">
-              <span>{{ getCategoryName(event.id) }}</span>
-            </div>
+            {{ getCategoryName(event.categoryIDs) }}
           </td>
           <td>{{ event.prix }} $</td>
           <td>{{ event.dateDebut }}</td>
-          <td>            
-            <button @click="$router.push(`/evenements/${event.id}/participer`)"><i class="fas fa-users"></i></button> | 
-            <button @click="$router.push(`/evenements/${event.id}/details`)"><i class="fas fa-eye"></i></button> | 
-            <button @click="deleteEventApi({id: event.id, 'index': index})"><i class="fas fa-trash"></i></button>
+          <td>
+            <button @click="$router.push(`/evenements/${event.id}/participer`)"><i class="fas fa-users"></i></button> |
+            <button @click="$router.push(`/evenements/${event.id}/details`)"><i class="fas fa-eye"></i></button> |
+            <button @click="deleteEventApi({ id: event.id, 'index': index })"><i class="fas fa-trash"></i></button>
           </td>
         </tr>
       </tbody>
-    </table><br/>
+    </table><br />
     <div>
       <button type="button" @click="filter.pageIndex--" :disabled="filter.pageIndex <= 1">Précédent</button>
-        Page {{ filter.pageIndex }} / {{ pageCount }}
+      Page {{ filter.pageIndex }} / {{ pageCount }}
       <button type="button" @click="filter.pageIndex++" :disabled="filter.pageIndex === pageCount">Suivant</button>
     </div>
   </div>
 </template>
 
 <script>
-  import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 
-  export default {
-    name: "CompEvenements",
-    data() {
-      return {
-        
-        event: {},
-        
-        filter:{
-          filterString: '',
-          pageIndex : 1,
-          pageSize : 2,
-        },
-        pageCount : 5,
+export default {
+  name: "CompEvenements",
+  data() {
+    return {
 
-        texteRecherche : "",
+      event: {},
+      categorie: {},
+      ville: {},
+      filter: {
+        filterString: '',
+        pageIndex: 1,
+        pageSize: 10,
+      },
+      pageCount: 5,
 
-      };
-      
+      texteRecherche: "",
+
+    };
+
+  },
+  methods: {
+    ...mapActions({
+      getCategoriesApi: 'getCategoriesApi',
+      getEventsApi: 'getEventsApi',
+      getVillesApi: 'getVillesApi',
+      deleteEventApi: 'deleteEventApi',
+    }),
+    ...mapMutations({
+      setCategories: 'setCategories',
+      setEvents: 'setEvents',
+      setVille: 'setVilles',
+      deleteEvent: 'deleteEvent',
+    }),
+    getCategoryName(categoryID) {
+      if (this.categories[categoryID]) {
+        return this.categories[categoryID].name;
+      } else {
+        return 'Category Not Found';
+      }
     },
-    methods: {
-      ...mapActions({
-        getCategoriesApi: 'getCategoriesApi',
-        getEventsApi: 'getEventsApi',
-        deleteEventApi: 'deleteEventApi',
-      }),
-      ...mapMutations({
-        setCategories: 'setCategories',
-        setEvents: 'setEvents',
-        deleteEvent: 'deleteEvent',
-      }),
-      loadEvents() {
-        this.getEventsApi(this.filter)
-        .then(data => {          
+    getCityName(villeID) {
+      if (this.villes[villeID]) {
+        return this.villes[villeID].name;
+      } else {
+        return 'City Not Found';
+      }
+    },
+    loadEvents() {
+      this.getEventsApi(this.filter)
+        .then(data => {
           this.pageCount = data.pageCount;
-          //console.log(data)//pour voir data 
+          console.log(data)
         })
         .catch(error => {
           console.error("Error loading events:", error);
           this.$toast.error(`Erreur de communication avec le serveur lors du chargement des événements :(`);
         });
-      },
-      rechercher() {
-        this.filter.filterString = this.texteRecherche
-        this.filter.pageIndex = 1
-        this.loadEvents()
-      },
-      getCategoryName(eventId) {    
-        const category = this.categories.find(category => category.id === eventId);
-        return category ? category.name : 'Catégorie inconnue';
-      },
-
-    },    
-    computed: {
-      ...mapState({ events: 'events', categories: 'categories', villes: 'villes', participations: 'participations' }),
-      ...mapGetters({  }),
-      villesFiltrees() {
-        return this.villes.filter(ville => ville.ID === this.event.villeID);
-      },
-      participationsFiltrees() {
-        if (!this.participations || this.participations.length === 0) {
-          return 0;
-        }
-        else {
-          return this.participations.filter(participation => participation.evenementId === this.event.ID);
-        }        
-      },
-      categoriesFiltrees() {
-        return this.categories.filter(categorie => categorie.ID === this.event.categoryIDs);
-      },
     },
-    created() {
+    rechercher() {
+      this.filter.filterString = this.texteRecherche
+      this.filter.pageIndex = 1
       this.loadEvents()
-      this.getCategoriesApi().catch( () => this.$toast.error("erreur de communication avec le serveur lors du chargement des categories :("))
     },
-    watch:{
-      'filter.filterString'(){
-        this.filter.pageIndex = 1
-        this.loadEvents()
+
+  },
+  computed: {
+    ...mapState({ events: 'events', categories: 'categories', villes: 'villes', participations: 'participations' }),
+    ...mapGetters({}),
+    villesFiltrees() {
+      return this.villes.filter(ville => ville.ID === this.event.event.id);
+    },
+    participationsFiltrees() {
+      if (!this.participations || this.participations.length === 0) {
+        return 0;
       }
+      else {
+        return this.participations.filter(participation => participation.evenementId === this.event.ID);
+      }
+    },
+    categoriesFiltrees() {
+      return this.categories.filter(categorie => categorie.ID === this.event.id);
+    },
+  },
+  created() {
+    this.loadEvents()
+    this.getCategoriesApi().catch(() => this.$toast.error("erreur de communication avec le serveur lors du chargement des categories :("))
+    this.getVillesApi().catch(() => this.$toast.error("erreur de communication avec le serveur lors du chargement des villes :("))
+  },
+  watch: {
+    'filter.filterString'() {
+      this.filter.pageIndex = 1
+      this.loadEvents()
+
     }
   }
+}
 
 </script>
 
