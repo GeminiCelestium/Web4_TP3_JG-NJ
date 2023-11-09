@@ -27,7 +27,7 @@ namespace Web2.API.Controllers
         private static readonly List<CategoryDTO> Categorys  = new List<CategoryDTO>()
         {
             new CategoryDTO {ID = idSequence++, Name = "Festival"},
-            new CategoryDTO {ID = idSequence++, Name = "Musique" },
+            new CategoryDTO {ID = idSequence++, Name = "LAN" },
             new CategoryDTO {ID = idSequence++, Name = "Sport" },
             new CategoryDTO {ID = idSequence++, Name = "Politique"}
         };
