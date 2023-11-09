@@ -31,8 +31,9 @@
             </span>
           </td>
           <td>
-            <span> {{ getCategoriesApi(event.id) }}
-            </span>
+            <div v-for="event in events" :key="event.id">
+              <span>{{ getCategoryName(event.id) }}</span>
+            </div>
           </td>
           <td>{{ event.prix }} $</td>
           <td>{{ event.dateDebut }}</td>
@@ -100,7 +101,11 @@
         this.filter.filterString = this.texteRecherche
         this.filter.pageIndex = 1
         this.loadEvents()
-      }
+      },
+      getCategoryName(eventId) {    
+        const category = this.categories.find(category => category.id === eventId);
+        return category ? category.name : 'Catégorie inconnue';
+      },
 
     },    
     computed: {
