@@ -32,10 +32,13 @@
           <td>
             {{ getCategoryName(event.categoryIDs) }}
           </td>
-          <td>{{ event.prix }} $</td>
+          <td>
+            <span v-if="event.prix === 0" :class="{ gratuit: event.prix === 0 }">Gratuit</span>
+             <span v-else>{{ event.prix }}</span>
+            </td>
           <td>{{ event.dateDebut }}</td>
           <td>
-            <button @click="$router.push(`/evenements/${event.id}/participer`)"><i class="fas fa-users"></i></button> |
+            <button @click="$router.push({name: 'detailsEvent', params:{ id : event.id}})"><i class="fas fa-users"></i></button> |
             <button @click="$router.push(`/evenements/${event.id}/details`)"><i class="fas fa-eye"></i></button> |
             <button @click="deleteEventApi({ id: event.id, 'index': index })"><i class="fas fa-trash"></i></button>
           </td>
@@ -153,6 +156,10 @@ export default {
 </script>
 
 <style scoped>
+.gratuit {
+  color: lightgreen;
+}
+
 button,
 [aria-label] {
   cursor: pointer;
@@ -174,4 +181,10 @@ td {
   border: 1px solid;
   padding: 5px;
 }
+span {
+  color: black;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+}
+
 </style>

@@ -70,6 +70,16 @@ export default createStore({
           return Promise.reject(error)
         })
     },
+    getEventIDApi(eventId) {
+      return httpClientEvent.get(`/evenements/${eventId}`)
+      .then(response => { 
+        return response.data})
+        .catch(error =>{
+        
+        console.log(error)
+        return Promise.reject(error)
+      })    
+    },
     deleteEventApi(context, params) {
       console.log(params)
       httpClientEvent.delete(`/api/Evenements/${params.id}`)

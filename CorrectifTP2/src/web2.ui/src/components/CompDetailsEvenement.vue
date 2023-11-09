@@ -5,30 +5,30 @@
       <div class="beau-paragraphe">
         <div>
           <label for="titre">Titre </label>
-          <input type="text" id="titre" name="titre" :value="selectedEvent.titre" disabled />
+          <input type="text" disabled />
         </div>
         <div>
-          <label for="prix">Ville </label>
-          <input type="text" id="prix" name="prix" :value="selectedEvent.ville" disabled />
+          <label for="ville">Ville </label>
+          <input type="text"  name="prix"  disabled />
           <label for="organisateur">Organisateur </label>
-          <input type="text" id="organisateur" name="organisateur" :value="selectedEvent.organisateur" disabled />                      
+          <input type="text" disabled />                      
         </div>
         <div>
           <label for="dateFin">Categories </label>
-          <input type="text" id="dateFin" name="dateFin" :value="selectedEvent.dateFin" disabled />
+          <input type="text"  disabled />
           <label for="prix">Prix </label>
-          <input type="text" id="prix" name="prix" :value="selectedEvent.prix" disabled />
+          <input type="text"  disabled />
         </div>
       <div>
         <label for="dateDebut">Date de début</label>
-          <input type="text" id="dateDebut" name="dateDebut" :value="selectedEvent.dateDebut" disabled />
+          <input type="text"  disabled />
           <label for="dateFin">Date de fin </label>
-          <input type="text" id="dateFin" name="dateFin" :value="selectedEvent.dateFin" disabled />
+          <input type="text" disabled />
       </div>
         <div>
           
           <label for="description">Description </label>
-          <textarea id="description" name="description" :value="selectedEvent.description" disabled></textarea>
+          <textarea  name="description" disabled></textarea>
         </div>
         <div class="validation">
           <button type="button" @click="$router.push(`/evenements`)"><i class="fa-sharp fa-solid fa-angle-left"></i> Retour</button>
@@ -39,38 +39,39 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState , mapActions, mapMutations } from 'vuex';
 
 export default {
   name: 'CompDetailsEvenement',
   data() {
     return {
-      selectedEvent: {},
+      event: {},
     }
   },
   methods: {
     ...mapActions({        
-      getEventsApi: 'getEventsApi',
-      deleteEventApi: 'deleteEventApi',
-      loadEventDetails: 'loadEventDetails',
+      getEventIDApi: 'getEventIDApi',     
     }),
-  },
-  loadEventDetails(eventId) {
-    this.getEventDetailsApi(eventId)
-      .then(eventDetails => {
-        this.selectedEvent = eventDetails;
+    ...mapMutations({        
+      setEvent: 'setEvent',     
+    }),
+    loadEvent(eventId) {
+    this.getEventIDApi(eventId)
+      .then(data => {
+        console.log(data);
       })
-      .catch(error => {
-        console.error("Error loading event details:", error);
-        this.$toast.error(`Erreur de communication avec le serveur lors du chargement des détails de l'événement :(`);
-      });
+      
+  },
   },
   created() {
-  const eventId = this.$route.params.eventId;
-  this.loadEventDetails(eventId);
-},
+   this.loadEvent(this.$route.params.id);
+  },
+  computed: {
+     ...mapState(['categories']),
+ }
 };
 </script>
+
 <style lang="scss" scoped>
   .beau-paragraphe {
     text-align: justify;
