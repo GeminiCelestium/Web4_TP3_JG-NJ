@@ -57,8 +57,11 @@ export default {
     }),
   },
   created() {
-   this.getEventIDApi(this.$route.params.id);
-  },
+  const eventId = this.$route.params.id;
+  console.log(eventId)
+  this.getEventIDApi(eventId)
+},
+
   computed: {
  }
 };

@@ -5,6 +5,7 @@ export default createStore({
   strict: true,
   state: {
     events: [],
+    event: null,
     villes: [],
     categories: [],
   },
@@ -16,6 +17,9 @@ export default createStore({
     },
     setCategories(state, categories) {
       state.categories = categories
+    },
+    setEvent(state, event) {
+      state.event = event
     },
     setEvents(state, events) {
       state.events = events
@@ -70,15 +74,13 @@ export default createStore({
           return Promise.reject(error)
         })
     },
-    getEventIDApi(eventId) {
-      return httpClientEvent.get(`/evenements/${eventId}`)
-      .then(response => { 
-        return response.data})
-        .catch(error =>{
-        
-        console.log(error)
-        return Promise.reject(error)
-      })    
+    getEventIDApi(context, eventId) {
+      return httpClientEvent.get(`/api/Evenements/${eventId}`)
+    .then(response => context.commit('setEvent', response.data))
+    .catch(error => {
+      console.error(error);
+      return Promise.reject(error);
+    });
     },
     deleteEventApi(context, params) {
       console.log(params)
