@@ -18,7 +18,7 @@ namespace Web2.API.Controllers
     public class CategoriesController : ControllerBase
     {
         private readonly ICategoryBL _categoryBL;
-        private static int idSequence = 1;
+        private static int idSequence = 0;
         public CategoriesController(ICategoryBL categoryBL)
         {
             _categoryBL = categoryBL;
