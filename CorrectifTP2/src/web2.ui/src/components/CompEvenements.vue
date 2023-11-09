@@ -25,17 +25,15 @@
             {{ getCityName(event.villeID) }}
           </td>
           <td>
-            <span v-for="participation in participationsFiltrees" :key="participation.ID">
-              {{ participation.Count() }}
-            </span>
+            {{ getNbrParticipations(event.id) }}
           </td>
           <td>
             {{ getCategoryName(event.categoryIDs) }}
           </td>
           <td>
             <span v-if="event.prix === 0" :class="{ gratuit: event.prix === 0 }">Gratuit</span>
-             <span v-else>{{ event.prix }}</span>
-            </td>
+            <span v-else>{{ event.prix }}</span>
+          </td>
           <td>{{ event.dateDebut }}</td>
           <td>
             <button @click="$router.push({name: 'detailsEvent', params:{ id : event.id}})"><i class="fas fa-users"></i></button> |
@@ -60,7 +58,7 @@ export default {
   name: "CompEvenements",
   data() {
     return {
-
+      participation: {},
       event: {},
       categorie: {},
       ville: {},
@@ -93,15 +91,22 @@ export default {
       if (this.categories[categoryID]) {
         return this.categories[categoryID].name;
       } else {
-        return 'Category Not Found';
+        return 'Catégorie Non Trouvée';
       }
     },
     getCityName(villeID) {
       if (this.villes[villeID]) {
         return this.villes[villeID].name;
       } else {
-        return 'City Not Found';
+        return 'Ville Non Trouvée';
       }
+    },
+    getNbrParticipations(eventID) {
+      if (this.participations[eventID]) {
+        return this.participations[eventID].count;
+      } else {
+        return 'Nombre de Participations Non Trouvé';
+      }  
     },
     loadEvents() {
       this.getEventsApi(this.filter)
@@ -124,25 +129,12 @@ export default {
   computed: {
     ...mapState({ events: 'events', categories: 'categories', villes: 'villes', participations: 'participations' }),
     ...mapGetters({}),
-    villesFiltrees() {
-      return this.villes.filter(ville => ville.ID === this.event.event.id);
-    },
-    participationsFiltrees() {
-      if (!this.participations || this.participations.length === 0) {
-        return 0;
-      }
-      else {
-        return this.participations.filter(participation => participation.evenementId === this.event.ID);
-      }
-    },
-    categoriesFiltrees() {
-      return this.categories.filter(categorie => categorie.ID === this.event.id);
-    },
   },
   created() {
     this.loadEvents()
     this.getCategoriesApi().catch(() => this.$toast.error("erreur de communication avec le serveur lors du chargement des categories :("))
     this.getVillesApi().catch(() => this.$toast.error("erreur de communication avec le serveur lors du chargement des villes :("))
+    this.getParticipationsApi().catch(() => this.$toast.error("erreur de communication avec le serveur lors du chargement des participations :("))
   },
   watch: {
     'filter.filterString'() {
