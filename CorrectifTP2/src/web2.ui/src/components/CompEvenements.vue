@@ -31,8 +31,7 @@
             </span>
           </td>
           <td>
-            <span v-for="categoryID in event.categoryIDs" :key="categoryID">
-              {{ getCategoryNames(event.categoryIDs) }}
+            <span> {{ getCategoriesApi(event.id) }}
             </span>
           </td>
           <td>{{ event.prix }} $</td>
@@ -66,7 +65,7 @@
         filter:{
           filterString: '',
           pageIndex : 1,
-          pageSize : 10,
+          pageSize : 2,
         },
         pageCount : 5,
 
@@ -77,7 +76,7 @@
     },
     methods: {
       ...mapActions({
-        getCategories: 'getCategoriesApi',
+        getCategoriesApi: 'getCategoriesApi',
         getEventsApi: 'getEventsApi',
         deleteEventApi: 'deleteEventApi',
       }),
@@ -97,16 +96,6 @@
           this.$toast.error(`Erreur de communication avec le serveur lors du chargement des événements :(`);
         });
       },
-      getCategoryNames(categoryIDs) {
-    const categoryNames = [];
-    for (const categoryID of categoryIDs) {
-      const category = this.categories.find(category => category.ID === categoryID);
-      if (category) {
-        categoryNames.push(category.name);
-      }
-    }
-    return categoryNames.length > 0 ? categoryNames : ['On a les Ids mais pas les Noms...'];
-  },
       rechercher() {
         this.filter.filterString = this.texteRecherche
         this.filter.pageIndex = 1
@@ -134,6 +123,7 @@
     },
     created() {
       this.loadEvents()
+      this.getCategoriesApi().catch( () => this.$toast.error("erreur de communication avec le serveur lors du chargement des categories :("))
     },
     watch:{
       'filter.filterString'(){
